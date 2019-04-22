@@ -1,6 +1,6 @@
 /* JQUERY */
 
-$(document).ready(function() {
+$(document).ready(function($) {
 
     /* Estilo al boton del menú activo */
 
@@ -15,4 +15,5 @@ $(document).ready(function() {
         $('#user ul').slideToggle(300);
     });
 
+    
 });

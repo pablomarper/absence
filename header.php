@@ -122,7 +122,7 @@ if (isset($_POST['acceder'])) {
             ?>
 
             <div id="logoHome">
-                <div id="iconoHome" class="fas fa-marker"></div>
+                <a href="index.php?p=login" id="iconoHome" class="fas fa-marker"></a>
                 <h1><span>Absence</span><span>App</span></h1>
             </div>
 

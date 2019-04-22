@@ -10,7 +10,7 @@
             if ($pagina == 'login'){
                 $p = 'home.php';
             } else if ($pagina == 'registrar') {
-                $p = 'registrar.php';
+                $p = 'home.php';
             } else if ($pagina == 'profe') {
                 $p = 'profesores/profesorHome.php';
             } else if ($pagina == 'profeAsign') {

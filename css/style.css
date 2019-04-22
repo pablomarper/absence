@@ -59,6 +59,10 @@
     margin: .5em;
 }
 
+#page header #iconoHome:hover {
+    text-decoration: none;
+}
+
 #page header #logo {
     display: flex;
     flex-direction: row;
@@ -154,28 +158,29 @@
 /*--> Inicio de sesion <--*/
 
 #homePrincipal {
-    background: #db6033;
-    background: -moz-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,96,51,1)), color-stop(97%, rgba(194,130,58,1)), color-stop(100%, rgba(194,130,58,1)));
-    background: -webkit-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
-    background: -o-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
-    background: -ms-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
-    background: linear-gradient(to bottom, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
-    height: 100vh;
-    padding-top: 10em;
+    background: rgba(219,96,51,1);
+    background: -moz-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(219,96,51,1)), color-stop(19%, rgba(219,96,51,1)), color-stop(85%, rgba(214,184,148,1)), color-stop(100%, rgba(214,184,148,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
+    background: linear-gradient(135deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
+    padding-top: 8em;
+    min-height: 100vh;
 }
 
 #homePrincipal #formu {
-    margin: 0 5em;
+    margin: 2% 5em;
     display: flex;
     flex-direction: column;
     width: 485px;
-    height: 75%;
-    background-color: #fff;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.562);
+    position: absolute;
 }
 
 #homePrincipal #formu p {
-    margin: 1em;
+    margin: 2em 1em 1em;
     font-weight: bold;
 }
 
@@ -183,11 +188,17 @@
     text-align: center;
 }
 
-#homePrincipal #formu input {
+#homePrincipal #formu input, #homePrincipal #formu select {
     padding: .5em;
     margin: .5em 1.5em;
     border: 1px solid #e64c14;
     width: 90%;
+}
+
+
+#homePrincipal #formu input[type='checkbox'] {
+    width: auto;
+    margin: 1em .5em .5em 1.5em;
 }
 
 #homePrincipal #formu input[type='submit'] {
@@ -198,7 +209,7 @@
     transition: .5s;
 }
 
-#homePrincipal #formu #acceder {
+#homePrincipal #formu #acceder, #regis {
     margin-top: 3em;
     background: #db6033;
 }
@@ -207,7 +218,7 @@
     background-color: #3c7bce;
 }
 
-#homePrincipal #formu #acceder:hover {
+#homePrincipal #formu #acceder:hover, #regis:hover {
     background: #d48f70;
     cursor: pointer;
 }
@@ -215,6 +226,43 @@
 #homePrincipal #formu #registrar:hover {
     background-color: #99b0ee;
     cursor: pointer;
+}
+
+.slider {
+    width: 100%;
+    height: 800px;
+	margin: auto;
+	overflow: hidden;
+}
+
+.slider ul {
+	display: flex;
+	padding: 0;
+	width: 400%;
+	animation: cambio 20s infinite alternate linear;
+}
+
+.slider li {
+	width: 100%;
+	list-style: none;
+}
+
+.slider img {
+    width: 100%;
+}
+
+@keyframes cambio {
+	0% {margin-left: 0;}
+	20% {margin-left: 0;}
+	
+	25% {margin-left: -100%;}
+	45% {margin-left: -100%;}
+	
+	50% {margin-left: -200%;}
+	70% {margin-left: -200%;}
+	
+	75% {margin-left: -300%;}
+	100% {margin-left: -300%;}
 }
 
 /*FIN PRUEBA*/
