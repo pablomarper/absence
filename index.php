@@ -8,7 +8,7 @@
 
 
             if ($pagina == 'login'){
-                $p = 'principal.php';
+                $p = 'home.php';
             } else if ($pagina == 'registrar') {
                 $p = 'registrar.php';
             } else if ($pagina == 'profe') {
