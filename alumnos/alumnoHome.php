@@ -1,5 +1,5 @@
 <div id="aluHome">
-    <h3>
+    <h3 class="titulos">
         <i class="fas fa-circle"></i>
         <span>Horario</span>
     </h3>
@@ -12,6 +12,15 @@
             <td>Miercoles</td>
             <td>Jueves</td>
             <td>Viernes</td>
+        </tr>
+
+        <tr class="horarioDiasRespon">
+            <td></td>
+            <td>L</td>
+            <td>M</td>
+            <td>M</td>
+            <td>J</td>
+            <td>V</td>
         </tr>
 
     <?php
@@ -37,7 +46,7 @@
         $horarioAlu7 = new HorarioAlumno();
         $horarioAlu7->septima($_SESSION['login']['id']);
 
-        $horario = array("08:00 - 08:55", "08:55 - 09:50", "09:50 - 10:45", "10:45 - 11:10", "11:10 - 12:05", "12:05 - 13:30", "13:00 - 13:15", "13:15 - 14:10", "14:10 - 15:05");
+        $horario = array("08:00", "08:55", "09:50", "10:45", "11:10", "12:05", "13:00", "13:15", "14:10");
         $dias = array("L", "M", "X", "J", "V");
         $filas = array($horarioAlu1->getPrimera(), $horarioAlu2->getSegunda(), $horarioAlu3->getTercera(), $horarioAlu4->getCuarta(), $horarioAlu5->getQuinta(), $horarioAlu6->getSexta(), $horarioAlu7->getSeptima());
 

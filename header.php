@@ -2,6 +2,7 @@
 require('lib/conexion.php');
 require('clases/profesor.php');
 require('clases/alumno.php');
+require('clases/admin.php');
 require('clases/asignatura.php');
 require('clases/horarioProfe.php');
 require('clases/horarioAlumno.php');
@@ -12,9 +13,14 @@ require('clases/curso.php');
 session_start();
 
 if (isset($_SESSION['login']['id'])) {
-    $pagina = 'profe';
     $usuario = $_SESSION['login']['id'];
-}else {
+
+    if (isset($_SESSION['login']['tutor'])) {
+        $pagina = 'profeHome';
+    } else {
+        $pagina = 'alumnoHom';
+    }
+} else {
     $pagina = 'login';
 }
 
@@ -39,10 +45,10 @@ if (isset($_POST['acceder'])) {
         $profe1->esTutor($usuario);
 
         if ($profe->getNombre() != "") {
-            $pagina = 'profe';
+            $pagina = 'profeHome';
             if ($profe1->getTutor()) {
                 $_SESSION['login'] = array("id" => $usuario, "tutor" => "SI");
-            }else{
+            } else {
                 $_SESSION['login'] = array("id" => $usuario, "tutor" => "NO");
             }
         } else {
@@ -50,10 +56,18 @@ if (isset($_POST['acceder'])) {
             $alu->login($usuario, $contraseña);
 
             if ($alu->getNombre() != "") {
-                $pagina = 'alumno';
+                $pagina = 'alumnoHom';
 
                 $_SESSION['login'] = array("id" => $usuario);
-                
+            } else {
+                $admin = new Admin();
+                $admin->login($usuario, $contraseña);
+
+                if ($admin->getNombre()) {
+                    $pagina = 'administr';
+
+                    $_SESSION['login'] = array("id" => $usuario, "admin" => "SI");
+                }
             }
         }
     }
@@ -63,22 +77,40 @@ if (isset($_POST['acceder'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- JQuery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- fancyBox  archivo CSS -->
+    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+    <!-- fancyBox archivo JS -->
+    <script src="js/jquery.fancybox.min.js"></script>
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+
     <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <title>AbsenceApp</title>
 </head>
+
 <body>
     <div id="page">
-        <header class="<?php if (isset($_SESSION['login']['id'])){ echo 'home';} else { echo 'first';}?>">
+        <header class="<?php if (isset($_SESSION['login']['id'])) {
+                            echo 'home';
+                        } else {
+                            echo 'first';
+                        } ?>">
             <?php
             if (isset($_SESSION['login']['id'])) { ?>
 
@@ -86,18 +118,122 @@ if (isset($_POST['acceder'])) {
                     <div id="icono" class="fas fa-marker"></div>
                     <h1>AbsenceApp</h1>
                 </div>
+                <ul id="menuRes">
+                    <li>
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                        <ul class="submenu ocultar">
+                            <?php
+                            if (isset($_SESSION['login']['tutor'])) {
+                                ?>
+                                <li>
+                                    <a href="index.php?p=profeHome">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                                </td>
+                                                <td>
+                                                    <span class="nomb">Inicio</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="index.php?p=profeAsig">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                <i class="fas fa-users" aria-hidden="true"></i>
+                                                </td>
+                                                <td>
+                                                    <span class="nomb">Alumnos</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </li>
+                                <?php
+                                if ($_SESSION['login']['tutor'] == "SI") { ?>
+                                    <li>
+                                        <a href="index.php?p=profeTuto">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                                    </td>
+                                                    <td>
+                                                        <span class="nomb">Tutoría</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </a>
+                                    </li>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                                <li>
+                                    <a href="index.php?p=alumnoHom">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                                </td>
+                                                <td>
+                                                    <span class="nomb">Inicio</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </a>
+                                </li>
+                            <?php
+                        }
+                        ?>
+                            <li>
+                                <a href="index.php?p=perfilUse">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                            </td>
+                                            <td>
+                                                <span class="nomb">Perfil</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="index.php?p=login&d=off">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <i class="fa fa-power-off" aria-hidden="true"></i>
+                                            </td>
+                                            <td>
+                                                <span class="nomb">Salir</span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
                 <ul id="user">
                     <li>
                         <i class="fa fa-user-circle" aria-hidden="true"></i>
                         <ul class="menu-user ocultar">
                             <?php
+                            if (!isset($_SESSION['login']['admin'])) {
                                 if (isset($_SESSION['login']['tutor'])) {
                                     $profe = new Profesor();
                                     $profe->get($_SESSION['login']['id']);
                                     $nombre = $profe->getNombre();
                                     $ape1 = $profe->getApellido1();
                                     $ape2 = $profe->getApellido2();
-                                }else{
+                                } else {
                                     $alum = new Alumno();
                                     $alum->get($_SESSION['login']['id']);
                                     $nombre = $alum->getNombre();
@@ -110,23 +246,33 @@ if (isset($_POST['acceder'])) {
                                     <span>$nombre $ape1 $ape2</span>
                                 </li>
                                 ";
-                            ?>
-                            <li><a href="index.php?p=perfil" ><i class="far fa-user" aria-hidden="true"></i> Perfil</a></li>
+
+                                if (isset($_GET['mO'])) {
+                                    ?>
+                                    <li><a href="index.php?p=perfilUse&mO=si"><i class="far fa-user" aria-hidden="true"></i> Perfil</a></li>
+                                <?php
+                            } else {
+                                ?>
+                                    <li><a href="index.php?p=perfilUse"><i class="far fa-user" aria-hidden="true"></i> Perfil</a></li>
+                                <?php
+                            }
+                        }
+                        ?>
+
                             <li><a href="index.php?p=login&d=off"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</a></li>
                         </ul>
                     </li>
                 </ul>
-                <!--<a href="index.php?p=login&d=off" class="apagar"><i class="fa fa-power-off" aria-hidden="true"></i> Salir</a>-->
             <?php
-            } else {
+        } else {
             ?>
 
-            <div id="logoHome">
-                <a href="index.php?p=login" id="iconoHome" class="fas fa-marker"></a>
-                <h1><span>Absence</span><span>App</span></h1>
-            </div>
+                <div id="logoHome">
+                    <a href="index.php?p=login" id="iconoHome" class="fas fa-marker"></a>
+                    <h1><span>Absence</span><span>App</span></h1>
+                </div>
 
             <?php
-            }
-            ?>  
+        }
+        ?>
         </header>

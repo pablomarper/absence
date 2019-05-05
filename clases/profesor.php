@@ -10,7 +10,8 @@ class Profesor extends DBAbstractModel
     private $apellido1;
     private $apellido2;
     private $correo;
-    private $password;
+    private $passw;
+    private $claseTuto = array();
     private $tutor = false;
     private $tutoria = array();
     private $asignaturas = array();
@@ -82,14 +83,14 @@ class Profesor extends DBAbstractModel
         return $this;
     }
   
-    public function getPassword()
+    public function getPassw()
     {
-        return $this->password;
+        return $this->passw;
     }
 
-    public function setPassword($password)
+    public function setPassw($password)
     {
-        $this->password = $password;
+        $this->passw = $password;
 
         return $this;
     }
@@ -102,6 +103,18 @@ class Profesor extends DBAbstractModel
     public function setTutor($tutor)
     {
         $this->tutor = $tutor;
+
+        return $this;
+    }
+
+    public function getClaseTuto()
+    {
+        return $this->claseTuto;
+    }
+
+    public function setClaseTuto($claseTuto)
+    {
+        $this->claseTuto = $claseTuto;
 
         return $this;
     }
@@ -135,31 +148,26 @@ class Profesor extends DBAbstractModel
 
     public function set($prod_data = array())
     {
-        if (array_key_exists('cod_prod', $prod_data)) {
-            $this->get($prod_data['cod_prod']); //leemos el producto por si existe, no crearlo de nuevo
 
-            if ($prod_data['cod_prod'] != $this->cod_prod) {
-                foreach ($prod_data as $campo => $valor) {
-                    $$campo = $valor;
-                }
-
-                $this->query = "
-                INSERT INTO profesores
-                (dni, nombre, apellido1, apellido2, correo, password)
-                VALUES
-                ('$dni', '$nombre', '$apellido1', '$apellido2', '$correo', $password)
-                ";
-
-                $this->execute_single_query();
-            }
+        foreach ($prod_data as $campo => $valor) {
+            $$campo = $valor;
         }
+
+        $this->query = "
+        INSERT INTO profesores
+        (dni, nombre, apellido1, apellido2, correo, passw)
+        VALUES
+        ('$dni', '$nombre', '$apellido1', '$apellido2', '$correo', '$passw')
+        ";
+
+        $this->execute_single_query();
     }
 
     public function get($cod_prod = '')
     {
         if ($cod_prod != '') {
             $this->query = "
-            SELECT dni, nombre, apellido1, apellido2, correo, password
+            SELECT dni, nombre, apellido1, apellido2, correo, passw
             FROM profesores
             WHERE dni = '$cod_prod'
             ";
@@ -186,12 +194,11 @@ class Profesor extends DBAbstractModel
 			nombre = '$nombre',
             apellido1 = '$apellido1',
             apellido2 = '$apellido2',
-            password = '$password',
+            passw = '$passw'
 			WHERE dni = '$dni'
         ";
         
         $this->execute_single_query();
-        $this->mensaje = 'Producto modificado';
     }
 
     public function delete($dni = '')
@@ -202,7 +209,6 @@ class Profesor extends DBAbstractModel
         ";
         
         $this->execute_single_query();
-        $this->mensaje = 'Producto eliminado';
     }
 
     public function get_todos()
@@ -219,9 +225,9 @@ class Profesor extends DBAbstractModel
     public function login($user, $pass)
     {
         $this->query = "
-        SELECT dni, nombre, apellido1, apellido2, correo, password
+        SELECT dni, nombre, apellido1, apellido2, correo, passw
         FROM profesores
-        WHERE dni = '$user' AND password = '$pass'
+        WHERE dni = '$user' AND passw = '$pass'
         ";
 
         $this->get_results_from_query();
@@ -338,5 +344,41 @@ class Profesor extends DBAbstractModel
             }
         }
     }
+
+    public function claseTutoria($cod) {
+        if ($cod != '') {
+            $this->query = "
+            SELECT * 
+            FROM cursos 
+            WHERE id_tutor = '$cod'
+            ";
+
+            $this->get_results_from_query();
+
+            if (count($this->rows) > 0){
+
+                for ($i = 0; $i < count($this->rows); $i++) {
+                    $this->claseTuto = $this->rows[$i];
+                }
+            }
+        }
+    }
+
+    public function buscar($cod) {
+        if ($cod != '') {
+            $this->query = "
+            SELECT * 
+            FROM profesores 
+            WHERE dni = '$cod'
+            ";
+
+            $this->get_results_from_query();
+
+            if (count($this->rows) > 0){
+                return true;
+            }
+            return false;
+        }
+    } 
 }
  

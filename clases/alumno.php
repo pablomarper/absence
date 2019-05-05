@@ -9,6 +9,7 @@ class Alumno extends DBAbstractModel
     private $apellido1;
     private $apellido2;
     private $correo;
+    private $passw;
     private $incidencias = array();
 
     function __construct()
@@ -64,6 +65,18 @@ class Alumno extends DBAbstractModel
         return $this;
     }
 
+    public function getPassw()
+    {
+        return $this->passw;
+    }
+
+    public function setPassw($pass)
+    {
+        $this->passw = $pass;
+
+        return $this;
+    }
+
     public function getCorreo()
     {
         return $this->correo;
@@ -88,11 +101,28 @@ class Alumno extends DBAbstractModel
         return $this;
     }
 
+    public function set($prod_data = array())
+    {
+
+        foreach ($prod_data as $campo => $valor) {
+            $$campo = $valor;
+        }
+
+        $this->query = "
+        INSERT INTO alumnos
+        (dni, nombre, apellido1, apellido2, correo, passw)
+        VALUES
+        ('$dni', '$nombre', '$apellido1', '$apellido2', '$correo', '$passw')
+        ";
+
+        $this->execute_single_query();
+    }
+
     public function get($cod_prod = '')
     {
         if ($cod_prod != '') {
             $this->query = "
-            SELECT dni, nombre, apellido1, apellido2, correo, password
+            SELECT dni, nombre, apellido1, apellido2, correo, passw
             FROM alumnos
             WHERE dni = '$cod_prod'
             ";
@@ -107,12 +137,31 @@ class Alumno extends DBAbstractModel
         }
     }
 
+    public function edit($prod_data = array())
+    {
+        foreach ($prod_data as $campo => $valor){
+            $$campo = $valor;
+        }
+
+        $this->query = "
+			UPDATE alumnos
+			SET correo = '$correo',
+			nombre = '$nombre',
+            apellido1 = '$apellido1',
+            apellido2 = '$apellido2',
+            passw = '$passw'
+			WHERE dni = '$dni'
+        ";
+        
+        $this->execute_single_query();
+    }
+
     public function login($user, $pass)
     {
         $this->query = "
-        SELECT dni, nombre, apellido1, apellido2, correo, password
+        SELECT dni, nombre, apellido1, apellido2, correo, passw
         FROM alumnos
-        WHERE dni = '$user' AND password = '$pass'
+        WHERE dni = '$user' AND passw = '$pass'
         ";
 
         $this->get_results_from_query();
@@ -146,4 +195,21 @@ class Alumno extends DBAbstractModel
             }
         }
     }
+
+    public function buscar($cod) {
+        if ($cod != '') {
+            $this->query = "
+            SELECT * 
+            FROM alumnos 
+            WHERE dni = '$cod'
+            ";
+
+            $this->get_results_from_query();
+
+            if (count($this->rows) > 0){
+                return true;
+            }
+            return false;
+        }
+    } 
 }

@@ -21,6 +21,7 @@
     background-color: transparent;
     height: 13vh;
     color: #fff;
+    margin: .5em 0;
 }
 
 #page .home{
@@ -46,7 +47,7 @@
 
 #page header #iconoHome{
     padding: .5em;
-    font-size: 2em;
+    font-size: 1.4em;
     border-radius: 10px;
     color: #df7853;
     background: rgba(245,236,233,1);
@@ -89,7 +90,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 1.1em;
     font-weight: bolder;
 }
 
@@ -98,61 +99,66 @@
     color: #fff;
 }
 
+.ocultar {
+    display: none;
+}
+
 #page header #user {
+    display: none;
+}
+
+#page header #menuRes {
     color: #fff;
     list-style-type: none;
 }
 
-#page header #user > li {
-    width: 160px;
-}
-
-#page header #user .fa-user-circle {
+#page header #menuRes .fa-bars {
     font-size: 2.5em;
-    padding: 20px;
-    margin-left: 1.8em;
+    margin: 20px;
     transition: .5s;
 }
 
-#page header #user .fa-user-circle:hover {
+#page header #menuRes .fa-bars:active {
     cursor: pointer;
     color: rgb(224, 217, 217);
 }
 
-#page header #user .menu-user {
-    color: #fff;
+#page header #menuRes .submenu {
     list-style-type: none;
     background-color: #202020c5;
+    position: absolute;
+    width: 100%;
+    left: 0;
 }
 
-#page header #user .menu-user li {
+#page header #menuRes .submenu li {
     padding: .5em 1em;
     border-bottom: 1px solid rgba(211, 205, 205, 0.534);
     transition: .5s;
 }
 
-#page header #user .menu-user li:not(.nom):hover{
+#page header #menuRes .submenu li:active{
     background-color: #727171d2;
 }
 
-#page header #user .menu-user li:nth-child(1) {
-    text-transform: capitalize;
-}
-
-#page header #user .menu-user a {
-    text-decoration: none;
+#page header #menuRes .submenu li a {
     color: #fff;
-    display: block;
-    width: 100%;
 }
 
-#page header #user .menu-user a i {
-    font-size: 1.1em;
-    margin-right: .8em;
+#page header #menuRes .submenu li a:hover {
+    text-decoration: none;
 }
 
-.ocultar {
-    display: none;
+#page header #menuRes .submenu li i {
+    font-size: 1.3em;
+}
+
+#page header #menuRes .submenu li span {
+    margin-left: 1em;
+}
+
+input:-webkit-autofill{
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
 }
 
 /*--> Inicio de sesion <--*/
@@ -164,37 +170,49 @@
     background: -webkit-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
     background: -o-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
     background: -ms-linear-gradient(-45deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
-    background: linear-gradient(135deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%);
-    padding-top: 8em;
-    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(219,96,51,1) 0%, rgba(219,96,51,1) 19%, rgba(214,184,148,1) 85%, rgba(214,184,148,1) 100%) fixed;
 }
 
 #homePrincipal #formu {
-    margin: 2% 5em;
+    padding: 5em 0 0;
     display: flex;
     flex-direction: column;
-    width: 485px;
-    height: 70%;
-    background-color: rgba(255, 255, 255, 0.562);
-    position: absolute;
+    width: 100%;
+    height: 100vh;
 }
 
 #homePrincipal #formu p {
-    margin: 2em 1em 1em;
+    margin: 1em;
     font-weight: bold;
+    color: #fff;
+    font-size: .8em;
+}
+
+#homePrincipal #formu .mensaje {
+    display: block;
+    width: 80%;
+    background-color: rgb(255, 183, 174);
+    border: 2px solid #ad1717;
+    color: #ad1717;
+    padding: .5em;
+    margin: 0 auto 0.5em;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
 }
 
 #homePrincipal #formu #separar {
     text-align: center;
+    margin: 0;
 }
 
-#homePrincipal #formu input, #homePrincipal #formu select {
-    padding: .5em;
-    margin: .5em 1.5em;
+#homePrincipal #formu input {
+    padding: .4em;
+    margin: .5em .5em;
     border: 1px solid #e64c14;
-    width: 90%;
+    width: 95%;
+    font-size: .8em;
 }
-
 
 #homePrincipal #formu input[type='checkbox'] {
     width: auto;
@@ -209,18 +227,14 @@
     transition: .5s;
 }
 
-#homePrincipal #formu #acceder, #regis {
+#homePrincipal #formu #acceder{
     margin-top: 3em;
-    background: #db6033;
+    background: #ffc4ae;
+    color: #b44821;
 }
 
 #homePrincipal #formu #registrar {
     background-color: #3c7bce;
-}
-
-#homePrincipal #formu #acceder:hover, #regis:hover {
-    background: #d48f70;
-    cursor: pointer;
 }
 
 #homePrincipal #formu #registrar:hover {
@@ -228,172 +242,309 @@
     cursor: pointer;
 }
 
-.slider {
-    width: 100%;
-    height: 800px;
-	margin: auto;
-	overflow: hidden;
+#homePrincipal #galeria {
+    background-color: rgb(255, 255, 255);
+    margin-top: 2.5em;
 }
 
-.slider ul {
-	display: flex;
-	padding: 0;
-	width: 400%;
-	animation: cambio 20s infinite alternate linear;
+#homePrincipal #galeria p {
+    padding-top: 1em;
+    margin-left: .5em;
+    background-color: transparent;
+    font-variant: small-caps;
+    color: #d84c19;
+    font-size: 2em;
 }
 
-.slider li {
-	width: 100%;
-	list-style: none;
-}
-
-.slider img {
-    width: 100%;
-}
-
-@keyframes cambio {
-	0% {margin-left: 0;}
-	20% {margin-left: 0;}
-	
-	25% {margin-left: -100%;}
-	45% {margin-left: -100%;}
-	
-	50% {margin-left: -200%;}
-	70% {margin-left: -200%;}
-	
-	75% {margin-left: -300%;}
-	100% {margin-left: -300%;}
-}
-
-/*FIN PRUEBA*/
-
-#inicio #sesion {
-    margin: 2em .5em;
-    font-size: 1.15em;
-}
-
-#inicio #sesion ul {
-    list-style: none;
+#homePrincipal #galeria div{
     display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 2em auto 0;
+    padding-bottom: 3em;
+    text-align: center;
 }
 
-#inicio #sesion ul li {
-    padding: 0 .8em;
+#homePrincipal #galeria div a {
+    display: block;
+    border: 2px solid orangered;
+    border-radius: 5px;
+    padding: .6em 0;
+    margin: 1em;
 }
 
-#inicio #sesion ul a {
-    color: black;
-    text-decoration: none;
+#homePrincipal #galeria img{
+    width: 90%;
 }
 
-#inicio #sesion ul li:nth-child(2) {
-    border-left: 1px solid black;
+#homePrincipal #formuRegis {
+    padding: 5em 0 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 900px;
 }
 
-#inicio form {
-    margin: 3em .8em;
+#homePrincipal #formuRegis p {
+    margin: 1em;
+    font-weight: bold;
+    color: #fff;
+    font-size: .8em;
+}
+
+#homePrincipal #formuRegis .mensaje {
+    display: block;
+    width: 80%;
+    background-color: rgb(116, 218, 116);
+    padding: .5em;
+    margin: 0 auto 0.5em;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
+#homePrincipal #formuRegis #contenido {
     display: flex;
     flex-direction: column;
 }
 
-#inicio form input {
-    padding: .8em;
-    margin: .3em .5em;
+#homePrincipal #formuRegis input, #homePrincipal #formuRegis select {
+    padding: .4em;
+    margin: .5em .5em;
     border: 1px solid #e64c14;
-    font-size: 1.05em;
+    width: 95%;
+    background-color: #fff;
+    font-size: .8em;
 }
 
-#inicio form input[type='submit'] {
-    color: #fff;
+#homePrincipal #formu #acceder{
+    margin-top: 3em;
+    background: #ffc4ae;
+    color: #b44821;
+}
+
+#homePrincipal #formu #acceder:hover{
+    background: #d48f70;
+    cursor: pointer;
+}
+
+#homePrincipal #formuRegis input[type='checkbox'] {
+    width: auto;
+    margin: 1em .5em .5em 1.5em;
+}
+
+#homePrincipal #formuRegis .condi {
+    margin: 1em 0;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+#homePrincipal #formuRegis .condi label{
+    margin: 0 0 0 .5em;
+}
+
+#homePrincipal #formuRegis .condi input{
+    margin: 0 0 0 .5em;
+}
+
+#homePrincipal #formuRegis #datos {
+    width: 100%;
+}
+
+#homePrincipal #formuRegis input[type='submit'] {
+    color: #b44821;
     font-weight: bold;
-    background-color: #3963d6;
     border: none;
     border-radius: 3px;
+    transition: .5s;
+    width: 95%;
+    margin-bottom: 1em;
+    background: #ffc4ae;
 }
 
-#inicio form input[type='submit']:active {
-    background-color: #6082df;
+#homePrincipal #formuRegis .error {
+    height: 80px;
+    overflow: auto;
+}
+
+#homePrincipal #formuRegis .error p {
+    background-color: rgba(252, 250, 250, 0.815);
+    padding: .2em;
+    margin: .2em 0;
+    font-size: .8em;
+    border-left: 3px solid rgb(163, 3, 3);
+    color: #000;
+}
+
+.slider {
+    display: none;
 }
 
 /*--> Menú navegación <--*/
 
-nav{
-    background: rgba(219,96,51,1);
-    background: -moz-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
-    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,96,51,1)), color-stop(72%, rgba(224,173,112,1)), color-stop(100%, rgba(224,173,112,1)));
-    background: -webkit-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
-    background: -o-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
-    background: -ms-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
-    background: linear-gradient(to bottom, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
-    height: 100%;
-    box-shadow: 5px 0 10px rgb(129, 129, 129);
-    position: fixed;
-    left: 0;
-    top: 80px;
-    width: 190px;
+nav {
+    display: none;
 }
 
-nav table tr td a {
-    text-decoration: none;
-    color: #f1c49e;
-    display: block;
-    transition: .5s;
+.menuOculto {
+    display: none;
 }
 
-nav table tr td a:hover {
-    color: #fff;
-    text-decoration: none;
-}
-
-nav i{
-    font-size: 1.8em;
-    margin-right: .5em;
-    padding: .5em;
-}
-
-nav table table {
-    width: 170px;
-}
-
-nav table table tr td:nth-child(1) {
-    width: 80px;
-}
-
-nav table table tr td:nth-child(2) {
-    width: 90px;
-}
-
-nav table table tr td:nth-child(2) {
-    text-align: left;
-}
-
-nav table tr:nth-last-child(1) {
-    margin-top: 10em;
-}
-
-.activo {
-    border-left: 5px solid #fff;
-    color: #fff;
+.menuNormal {
+    display: none;
 }
 
 /*--> Contenido <--*/
 
 main{
     margin-top: 80px;
-    margin-left: 190px;
+    margin-left: 0;
 }
 
-h3 {
+.titulos {
     background-color: #a08c7249;
     padding: .2em .5em;
     display: flex;
     align-items: center;
+    font-size: 1.4em;
+    width: 800px;
 }
 
-h3 .fa-circle {
+.titulos .fa-circle {
     color: rgb(88, 146, 30);
     font-size: .5em;
     margin-right: .2em;
+}
+
+/*--> PERFIL <--*/
+
+#perfil {
+    overflow: hidden;
+}
+
+#perfil #datos {
+    width: 80%;
+    max-width: 700px;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #ececec;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px #202020;
+}
+
+#perfil #datos #imagen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#perfil #datos #imagen img{
+    border-radius: 50%;
+    width: 180px;
+    height: 150px;
+    border: 3px solid #fff;
+    margin: 2em;
+}
+
+#perfil #datos #imagen a {
+    color: white;
+    display: block;
+    border-radius: 5px;
+    background: rgb(57, 119, 57);
+    width: 89px;
+    padding: 0.3em .5em;
+    margin: 1em;
+    transition: .5s;
+}
+
+#perfil #datos #imagen a:hover {
+    text-decoration: none;
+    background: #4ba84b;
+}
+
+#perfil #datos table {
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin: 1.5em auto;
+    width: 90%;
+}
+
+#perfil #datos table tr {
+    display: flex;
+    flex-direction: column;
+}
+
+#perfil #datos table tr:nth-last-child(1) {
+    display: block;
+}
+
+#perfil #datos table tr:nth-last-child(1) td {
+    width: 100%;
+    display: block;
+}
+
+#perfil #datos table td {
+    padding: .5em 1em;
+    width: 160px;
+}
+
+#perfil #datos table td:nth-child(1) {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .8em;
+}
+
+#perfil #datos table td:nth-child(2) {
+    width: 100%;
+    text-align: center;
+}
+
+#perfil #datos form table input {
+    border-radius: 5px;
+    border: 1px solid orangered;
+}
+
+#perfil #datos form table td:nth-last-child(1) {
+    text-align: center;
+}
+
+#perfil #datos form table input[type="submit"] {
+    background-color: #3963d6;
+    color: #fff;
+    padding: .5em;
+    border: none;
+    width: 70%;
+    font-size: 1.1em;
+    transition: .5s;
+}
+
+#perfil #datos form table input[type="submit"]:hover {
+    cursor: pointer;
+    background-color: #6082df;
+}
+
+#perfil #datos .error {
+    margin: 1em;
+}
+
+#perfil #datos .error p {
+    background-color: rgba(252, 250, 250, 0.815);
+    padding: .2em;
+    margin: .2em 0;
+    font-size: .8em;
+    border-left: 3px solid rgb(163, 3, 3);
+}
+
+#perfil .mensaje {
+    display: block;
+    width: 80%;
+    background-color: rgb(116, 218, 116);
+    padding: .5em;
+    margin: 1em auto;
+    border-radius: 5px;
+    text-align: center;
 }
 
 /*************************/
@@ -404,34 +555,32 @@ h3 .fa-circle {
 
 #homeP{
     margin: 2em 0;
+    overflow: hidden;
 }
 
 #horarioProfe {
-    width: 70%;
-    margin: 1em auto;
+    width: 90%;
+    margin: 1em;
     text-align: center;
     box-shadow: 5px 5px 8px #c7c6c6;
+    font-size: .8em;
 }
 
 #horarioProfe .horarioDias{
-    text-transform: uppercase;
+    display: none;
 }
 
-#horarioProfe .horarioDias td:nth-child(1){
+#horarioProfe .horarioDiasRespon td:nth-child(1){
     background-color: #fff;
 }
 
-#horarioProfe .horarioDias td, #horarioProfe td:nth-child(1){
+#horarioProfe .horarioDiasRespon td, #horarioProfe td:nth-child(1){
     background-color: #3a3a3a;
     color: #fff;
     font-weight: normal;
 }
 
-#horarioProfe tr:nth-child(10) td:nth-child(1){
-    border-bottom: 2px solid #fff;
-}
-
-#horarioProfe .horarioDias td:nth-child(1) {
+#horarioProfe .horarioDiasRespon td:nth-child(1) {
     border-right: 2px solid #fff;
 }
 
@@ -490,6 +639,49 @@ h3 .fa-circle {
 
 /*--> ASIGNATURAS PROFE <--*/
 
+#alumnosP {
+    overflow: hidden;
+}
+
+#alumnosP #formulario {
+    border: 1px double orangered;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 2em;
+    margin: 1em auto;
+}
+
+#alumnosP #formulario #cursos {
+    margin: 1em 0 0;
+}
+
+#alumnosP #formulario #cursos form {
+    display: flex;
+    flex-direction: column;
+}
+
+#alumnosP #formulario select {
+    padding: 0.4em .5em;
+    background-color: transparent;
+}
+
+#alumnosP #formulario #cursos input[type='submit'] {
+    color: white;
+    border: none;
+    border-radius: 5px;
+    background: #397739;
+    width: 89px;
+    padding: 0.3em .5em;
+    margin: 3em auto 0;
+    transition: .5s;
+}
+
+#alumnosP #formulario #cursos input[type='submit']:active {
+    background-color: #4ba84b;
+}
+
 #alumnosP #asignaturas #asig {
     margin: 2em;
 }
@@ -528,6 +720,30 @@ h3 .fa-circle {
     color: #000;
 }
 
+#alumnosP .error {
+    display: block;
+    width: 90%;
+    background-color: rgb(255, 183, 174);
+    border: 2px solid #ad1717;
+    color: #ad1717;
+    padding: .5em;
+    margin: 1em auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
+#alumnosP .mensaje {
+    display: block;
+    width: 90%;
+    background-color: rgb(116, 218, 116);
+    padding: .5em;
+    margin: 1em auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
 #aluSelec {
     width: 80%;
     margin: 1em auto;
@@ -555,6 +771,10 @@ h3 .fa-circle {
     text-align: center;
 }
 
+#aluSelec select {
+    background-color: #fff;
+}
+
 #aluSelec input[type='submit'] {
     margin-top: .5em;
     border: none;
@@ -572,7 +792,15 @@ h3 .fa-circle {
 
 /*--> TUTORIA PROFE <--*/
 
-#aluSelec .fa-eye {
+#tuto {
+    overflow: hidden;
+}
+
+#aluSelec {
+    font-size: .8em;
+}
+
+#aluSelec .fa-eye, .fa-eye-slash {
     color: #202020;
 }
 
@@ -580,12 +808,21 @@ h3 .fa-circle {
     color: #525252;
 }
 
+#aluSelec .fa-eye-slash:hover {
+    cursor: initial;
+}
+
 #incidenciasTuto {
     width: 80%;
     margin: 5em auto;
+    font-size: .8em;
 }
 
-#incidenciasTuto tr:nth-child(1) {
+#incidenciasTuto .normal {
+    display: none;
+}
+
+#incidenciasTuto .responsive {
     background-color: #3a3a3a;
     color: #fff;
 }
@@ -594,8 +831,27 @@ h3 .fa-circle {
     text-transform: capitalize;
 }
 
-#incidenciasTuto tr:nth-child(even) {
+#incidenciasTuto tr:nth-child(odd):not(.normal) {
     background-color: #e2e0e0;
+}
+
+#incidenciasTuto tr td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#incidenciasTuto tr .tipo {
+    width: 40%;
+    max-width: 75px;
+}
+
+#incidenciasTuto tr .larg {
+    display: none;
+}
+
+#incidenciasTuto #bot{
+    background-color: #fff;
 }
 
 #incidenciasTuto td {
@@ -612,11 +868,42 @@ h3 .fa-circle {
     text-transform: uppercase;
     padding: .2em .8em;
     border-radius: 5px;
+    transition: .5s;
 }
 
 #incidenciasTuto input[type='submit']:hover {
     background-color: #6082df;
     cursor: pointer;
+}
+
+#tuto #botones {
+    display: flex;
+    justify-content: center;
+}
+
+#crearPDF {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 90px;
+    margin: .5em 5em;
+    color: #fff;
+    background-color: #a52d2d;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: .4em;
+    transition: .5s;
+}
+
+#crearPDF:hover {
+    text-decoration: none;
+    background-color: #bb5e5e;
+    cursor: pointer;
+}
+
+#crearPDF i {
+    font-size: 1.5em;
 }
 
 /*********************/
@@ -627,34 +914,32 @@ h3 .fa-circle {
 
 #aluHome{
     margin: 2em 0;
+    overflow: hidden;
 }
 
 #horarioAlum {
-    width: 70%;
-    margin: 1em auto;
+    width: 90%;
+    margin: 1em;
     text-align: center;
     box-shadow: 5px 5px 8px #c7c6c6;
+    font-size: .8em;
 }
 
 #horarioAlum .horarioDias{
-    text-transform: uppercase;
+    display: none;
 }
 
-#horarioAlum .horarioDias td:nth-child(1){
+#horarioAlum .horarioDiasRespon td:nth-child(1){
     background-color: #fff;
 }
 
-#horarioAlum .horarioDias td, #horarioAlum td:nth-child(1){
+#horarioAlum .horarioDiasRespon td, #horarioAlum td:nth-child(1){
     background-color: #3a3a3a;
     color: #fff;
     font-weight: normal;
 }
 
-#horarioAlum tr:nth-child(10) td:nth-child(1){
-    border-bottom: 2px solid #fff;
-}
-
-#horarioAlum .horarioDias td:nth-child(1) {
+#horarioAlum .horarioDiasRespon td:nth-child(1) {
     border-right: 2px solid #fff;
 }
 
@@ -698,6 +983,43 @@ h3 .fa-circle {
     border-bottom: 1px solid #929292;
 }
 
+/*--> Pie de página <--*/
+
+footer {
+    background-color: rgb(54, 54, 54);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+footer p {
+    padding: 3em 1em .5em;
+    text-align: center;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style: none;
+    width: 35%;
+    margin: 0 auto;
+    padding-bottom: 3em;
+}
+
+footer ul a {
+    color: #fff;
+    transition: .5s;
+}
+
+footer ul a:hover {
+    color: rgb(243, 126, 84);
+}
+
+footer ul i {
+    font-size: 2em;
+}
+
 /*
    ============================================== 
    ||                MEDIA QUERY               ||
@@ -705,25 +1027,606 @@ h3 .fa-circle {
 */
 
 /* Móviles en horizontal o tablets en vertical */
+
 @media (min-width: 768px){
 
+    #page .first{
+        height: 10vh;
+    }
+
+    /*--> Inicio de sesion <--*/
+
+    #homePrincipal{
+        height: initial;
+    }
+
+    #homePrincipal #formu {
+        padding: 5em 0 0;
+        height: initial;
+    }
+
+    #homePrincipal #formu p {
+        margin: 2em 1em 1em;
+    }
+
+    #homePrincipal #formu .mensaje {
+        background-color: rgb(218, 128, 116);
+        border: none;
+        color: #000;
+    }
+
+    #homePrincipal #formu #separar {
+        margin: 1em;
+    }
+
+    #homePrincipal #formu input {
+        padding: .5em;
+        font-size: 1em;
+        margin: .5em 1.5em;
+        width: 93%;
+    }
+
+    #homePrincipal #formuRegis {
+        padding: 5em 0 0;
+        height: initial;
+    }
+
+    #homePrincipal #formuRegis p {
+        margin: 2em 1em 1em;
+    }
+
+    #homePrincipal #formuRegis .mensaje {
+        width: 30%;
+    }
+
+    #homePrincipal #formuRegis #contenido {
+        flex-direction: row;
+    }
+
+    #homePrincipal #formuRegis #datos {
+        width: 420px;
+    }
+
+    #homePrincipal #formuRegis input, #homePrincipal #formuRegis select {
+        margin: .5em 1.5em;
+        width: 90%;
+    }
+
+    #homePrincipal #formuRegis .condi input{
+        margin: 0 0 0 1.5em;
+    }
+
+    #homePrincipal #formuRegis input[type='submit'] {
+        width: 400px;
+        margin-bottom: 0;
+        color: #fff;
+    }
+
+    /*--> PERFIL <--*/
+
+    #perfil #datos {
+        flex-direction: row;
+    }
+
+    #perfil #datos #imagen {
+        display: initial;
+    }
+
+    #perfil #datos table {
+        width: 60%;
+    }
+
+    #perfil #datos table tr {
+        display: initial;
+    }
+
+    #perfil #datos table td:nth-child(2) {
+        width: initial;
+        text-align: initial;
+    }
+
+    #perfil .mensaje {
+        width: 30%;
+    }
+
+    /*--> Contenido <--*/
+
+    .titulos {
+        font-size: 1.75rem;
+        width: 100%;
+    }
+
+    /*************************/
+    /*--> P R O F E S O R <--*/
+    /*************************/
+
+    /*--> HOME PROFE <--*/
+
+    #horarioProfe {
+        width: 70%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
+    #horarioProfe .horarioDias{
+        text-transform: uppercase;
+        display: table-row;
+    }
+
+    #horarioProfe .horarioDiasRespon{
+        display: none;
+    }
+
+    #horarioProfe .horarioDias td:nth-child(1){
+        background-color: #fff;
+    }
     
-}
+    #horarioProfe .horarioDias td, #horarioProfe td:nth-child(1){
+        background-color: #3a3a3a;
+        color: #fff;
+        font-weight: normal;
+    }
+    
+    #horarioProfe .horarioDias td:nth-child(1) {
+        border-right: 2px solid #fff;
+    }
+
+    /*--> ASIGNATURAS PROFE <--*/
+
+    #alumnosP #formulario {
+        display: flex;
+        flex-direction: row;
+        width: 80%;
+        margin: 2em auto;
+    }
+
+    #alumnosP #formulario #cursos {
+        margin: 0 0 0 2em;
+    }
+
+    #alumnosP #formulario #cursos form {
+        flex-direction: row;
+    }
+
+    #alumnosP #formulario #cursos input[type='submit'] {
+        margin: 0 0 0 4em;
+    }
+
+    #alumnosP #formulario #cursos input[type='submit']:hover {
+        cursor: pointer;
+        background-color: #4ba84b;
+    }
+
+    #alumnosP .error {
+        width: 50%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
+    #alumnosP .mensaje {
+        width: 50%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
+    /*--> TUTORIA PROFE <--*/
+
+    #tuto #botones {
+        justify-content: flex-end;
+    }
+
+    #aluSelec {
+        font-size: 1em;
+    }
+
+    #incidenciasTuto {
+        font-size: 1em;
+    }
+
+    #incidenciasTuto .normal {
+        display: table-row;
+        background-color: #3a3a3a;
+        color: #fff;
+    }
+
+    #incidenciasTuto .responsive {
+        display: none;
+    }
+
+    #incidenciasTuto tr td {
+        white-space: normal;
+        overflow: initial;
+        text-overflow: initial;
+    }
+    
+    #incidenciasTuto tr .tipo {
+        width: initial;
+        max-width: initial;
+    }
+
+    #incidenciasTuto tr .larg {
+        display: table-cell;
+    }
+
+    #incidenciasTuto tr .abre {
+        display: none;
+    }
+
+    /*********************/
+    /*--> A L U M N O <--*/
+    /*********************/
+
+    /*--> HOME ALUMNO <--*/
+
+    #horarioAlum {
+        width: 70%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
+    #horarioAlum .horarioDias{
+        text-transform: uppercase;
+        display: table-row;
+    }
+
+    #horarioAlum .horarioDiasRespon{
+        display: none;
+    }
+
+    #horarioAlum .horarioDias td:nth-child(1){
+        background-color: #fff;
+    }
+    
+    #horarioAlum .horarioDias td, #horarioAlum td:nth-child(1){
+        background-color: #3a3a3a;
+        color: #fff;
+        font-weight: normal;
+    }
+    
+    #horarioAlum .horarioDias td:nth-child(1) {
+        border-right: 2px solid #fff;
+    }
 
 /* Tablets en horizontal o escritorios normales */
+
 @media (min-width: 1024px){
 
-    #inicio form input[type='submit']:hover {
-        background-color: #6082df;
+    #page header #iconoHome{
+        font-size: 2em;
+    }
+
+    #page header #logoHome h1{
+        font-size: 1.5em;
+    }
+
+    #page header #menuRes {
+        display: none;
+    }
+
+    #page header #user {
+        display: block;
+        color: #fff;
+        list-style-type: none;
+    }
+    
+    #page header #user > li {
+        width: 160px;
+    }
+    
+    #page header #user .fa-user-circle {
+        font-size: 2.5em;
+        padding: 20px;
+        margin-left: 1.8em;
+        transition: .5s;
+    }
+    
+    #page header #user .fa-user-circle:hover {
+        cursor: pointer;
+        color: rgb(224, 217, 217);
+    }
+    
+    #page header #user .menu-user {
+        color: #fff;
+        list-style-type: none;
+        background-color: #202020c5;
+    }
+    
+    #page header #user .menu-user li {
+        padding: .5em 1em;
+        border-bottom: 1px solid rgba(211, 205, 205, 0.534);
+        transition: .5s;
+    }
+    
+    #page header #user .menu-user li:not(.nom):hover{
+        background-color: #727171d2;
+    }
+    
+    #page header #user .menu-user li:nth-child(1) {
+        text-transform: capitalize;
+    }
+    
+    #page header #user .menu-user a {
+        text-decoration: none;
+        color: #fff;
+        display: block;
+        width: 100%;
+    }
+    
+    #page header #user .menu-user a i {
+        font-size: 1.1em;
+        margin-right: .8em;
+    }
+
+    /*--> Inicio de sesion <--*/
+
+    #homePrincipal #formu {
+        padding: 0;
+        margin: 10em 5em 0 5em;
+        width: 485px;
+        max-height: 500px;
+        background-color: rgba(255, 255, 255, 0.562);
+        position: absolute;
+        height: initial;
+    }
+
+    #homePrincipal #formu p {
+        margin: 2em 1em 1em;
+        color: #000;
+        font-size: 1em;
+    }
+
+    #homePrincipal #formu input {
+        padding: .5em;
+        font-size: 1em;
+        margin: .5em 1.5em;
+        width: 90%;
+    }
+    
+    #homePrincipal #formu #acceder{
+        background: #db6033;
+        color: #fff;
+    }
+
+    #homePrincipal #formu #registrar {
+        margin-bottom: 1.5em;
+    }
+
+    #homePrincipal #galeria p {
+        font-size: 2.5em;
+    }
+
+    #homePrincipal #galeria div{
+        flex-direction: row;
+    }
+
+    #homePrincipal #galeria a {
+        overflow: hidden;
+    }
+
+    #homePrincipal #galeria img{
+        margin: 0;
+        transition: 1.5s;
+    }
+
+    #homePrincipal #galeria a:hover img {
+        transform: scale(1.3);
+        background-color: rgba(206, 109, 52, 0.486);
+    }
+
+    #homePrincipal #formuRegis {
+        margin: 10em 5em 0 5em;
+        padding: 0;
+        width: 70%;
+        max-width: 900px;
+        height: initial;
+        background-color: rgba(255, 255, 255, 0.562);
+        position: absolute;
+    }
+
+    #homePrincipal #formuRegis input, #homePrincipal #formuRegis select {
+        padding: .5em;
+        border: 1px solid #e64c14;
+        width: 90%;
+        font-size: 1em;
+    }
+
+    #homePrincipal #formuRegis p {
+        margin: 1em;
+        font-weight: bold;
+        color: #000;
+        font-size: 1em;
+    }
+
+    #homePrincipal #formuRegis input[type='submit'] {
+        background: #db6033;
+        color: #fff;
+        margin-bottom: 1.5em;
+    }
+
+    #homePrincipal #formuRegis input[type='submit']:hover{
+        background: #d48f70;
         cursor: pointer;
     }
+
+    .slider {
+        display: block;
+        width: 100%;
+        height: 95vh;
+        margin: auto;
+        overflow: hidden;
+        padding-top: 8em;
+    }
+    
+    .slider ul {
+        display: flex;
+        padding: 0;
+        width: 400%;
+        animation: cambio 20s infinite alternate linear;
+    }
+    
+    .slider li {
+        width: 100%;
+        list-style: none;
+    }
+    
+    .slider img {
+        width: 100%;
+    }
+    
+    @keyframes cambio {
+        0% {margin-left: 0;}
+        20% {margin-left: 0;}
+        
+        25% {margin-left: -100%;}
+        45% {margin-left: -100%;}
+        
+        50% {margin-left: -200%;}
+        70% {margin-left: -200%;}
+        
+        75% {margin-left: -300%;}
+        100% {margin-left: -300%;}
+    }
+
+    /*--> Menú navegación <--*/
+
+    nav{
+        display: block;
+        background: #db6033;
+        background: -moz-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,96,51,1)), color-stop(72%, rgba(224,173,112,1)), color-stop(100%, rgba(224,173,112,1)));
+        background: -webkit-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
+        background: -o-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
+        background: -ms-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
+        background: linear-gradient(to bottom, rgba(219,96,51,1) 0%, rgba(224,173,112,1) 72%, rgba(224,173,112,1) 100%);
+        height: 100%;
+        box-shadow: 5px 0 10px rgb(129, 129, 129);
+        position: fixed;
+        left: 0;
+        top: 80px;
+    }
+    
+    .menuNormal {
+        width: 190px;
+        display: block;
+    }
+    
+    .menuOculto {
+        display: block;
+        width: 80px;
+    }
+    
+    .letrasHiden {
+        display: none;
+    }
+    
+    nav table {
+        width: 100%;
+    }
+    
+    nav .arrow {
+        background-color: #f5d0c3;
+    }
+    
+    nav .arrow a {
+        color: #000;
+        text-align: right;
+    }
+    
+    nav .arrow a:hover {
+        cursor: pointer;
+        color: #000;
+    }
+    
+    nav .arrow i {
+        font-size: 1.1em;
+    }
+    
+    nav table tr td a {
+        text-decoration: none;
+        color: #f1c49e;
+        display: block;
+        border-left: 5px solid transparent;
+        transition: .5s;
+    }
+    
+    nav table tr td a:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    nav i{
+        font-size: 1.8em;
+        margin-right: .5em;
+        padding: .5em;
+    }
+    
+    nav table table {
+        width: 170px;
+    }
+    
+    nav table table tr td:nth-child(1) {
+        width: 80px;
+    }
+    
+    nav table table tr td:nth-child(2) {
+        width: 90px;
+    }
+    
+    nav table table tr td:nth-child(2) {
+        text-align: left;
+    }
+    
+    nav table tr:nth-last-child(1) {
+        margin-top: 10em;
+    }
+    
+    .activo {
+        border-left: 5px solid #fff;
+        color: #fff;
+    }
+
+    /*--> Contenido <--*/
+
+    h3 {
+        width: 100%;
+    }
+
+    .amplio {
+        margin-left: 80px;
+    }
+
+    .normal {
+        margin-left: 190px;
+    }
+
+    /*************************/
+    /*--> P R O F E S O R <--*/
+    /*************************/
+
+    /*--> HOME PROFE <--*/
+
+    
+
+    /*--> ASIGNATURAS PROFE <--*/
+
+    #alumnosP .error {
+        width: 30%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
+    #alumnosP .mensaje {
+        width: 30%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
 }
 
 /* Escritorios muy anchos */
 @media (min-width: 1200px){
 
-    #inicio form input[type='submit']:hover {
-        background-color: #6082df;
-        cursor: pointer;
+    #page .first{
+        height: 13vh;
     }
 }

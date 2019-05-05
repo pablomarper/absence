@@ -1,15 +1,33 @@
-<div id="inicio">
-    <div id="sesion">
-        <ul>
-            <li><a href="index.php?p=login">Inicia sesión</a></li>
-            <li><a href="index.php?p=registrar"><b>Registrarte</b></a></li>
-        </ul>
-    </div>
-    <form action="index.php" method="post">
-        <input type="text" name="user" id="user" placeholder="Email"><br>
+<?php
+require('lib/conexion.php');
+require('clases/alumno.php');
+require('clases/profesor.php');
 
-        <input type="password" name="passw" id="passw" placeholder="Contraseña"><br>
+    $tipo = $_POST['tipo'];
+    $dni = $_POST['user'];
+    $nom = $_POST['nom'];
+    $apellido1 = $_POST['apellido1'];
+    $apellido2 = $_POST['apellido2'];
+    $correo = $_POST['correo'];
+    $password = $_POST['password'];
 
-        <input type="submit" value="Registrarse" name="regis" id="regis">
-    </form>
-</div>
+    $datos = array('dni'=> $dni, 'nombre' => $nom, 'apellido1' => $apellido1, 'apellido2' => $apellido2, 'correo' => $correo, 'passw' => $password);
+
+    if ($tipo == 1) {
+        $profe = new Profesor();
+
+        if (!$profe->buscar($dni)) {
+
+            $profe->set($datos);
+        }
+    } else {
+
+        $alu = new Alumno();
+
+        if (!$alu->buscar($dni)) {
+
+            $alu->set($datos);
+        }
+    }
+    
+?>

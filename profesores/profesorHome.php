@@ -1,5 +1,5 @@
 <div id="homeP">
-    <h3>
+    <h3 class="titulos">
         <i class="fas fa-circle"></i>
         <span>Horario</span>
     </h3>
@@ -12,6 +12,15 @@
             <td>Miércoles</td>
             <td>Jueves</td>
             <td>Viernes</td>
+        </tr>
+
+        <tr class="horarioDiasRespon">
+            <td></td>
+            <td>L</td>
+            <td>M</td>
+            <td>M</td>
+            <td>J</td>
+            <td>V</td>
         </tr>
     
     <?php
