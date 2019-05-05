@@ -796,6 +796,30 @@ main{
     overflow: hidden;
 }
 
+#tuto .error {
+    display: block;
+    width: 90%;
+    background-color: rgb(255, 183, 174);
+    border: 2px solid #ad1717;
+    color: #ad1717;
+    padding: .5em;
+    margin: 1em auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
+#tuto .mensaje {
+    display: block;
+    width: 90%;
+    background-color: rgb(116, 218, 116);
+    padding: .5em;
+    margin: 1em auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
 #aluSelec {
     font-size: .8em;
 }
@@ -810,6 +834,10 @@ main{
 
 #aluSelec .fa-eye-slash:hover {
     cursor: initial;
+}
+
+#aluSelec .seleccionado {
+    text-decoration: underline;
 }
 
 #incidenciasTuto {
@@ -983,6 +1011,190 @@ main{
     border-bottom: 1px solid #929292;
 }
 
+/***********************************/
+/*--> A D M I N I S T R A D O R <--*/
+/***********************************/
+
+/*--> MODO ADMINISTRAR <--*/
+
+#adminis {
+    overflow: hidden;
+    font-size: .8em;
+}
+
+#adminis .titulos a {
+    color: #000;
+}
+
+#adminis .titulos a:hover {
+    text-decoration: none;
+}
+
+#adminis #menuAdmin1 {
+    border: 1px solid orangered;
+    border-radius: 5px;
+    width: 80%;
+    margin: 4em auto;
+    padding: 4em 2em;
+}
+
+#adminis #menuAdmin1 ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+#adminis #menuAdmin1 ul li {
+    margin: 1em 0;
+    text-align: center;
+}
+
+#adminis #menuAdmin1 ul a {
+    color: #fcdabe;
+}
+
+#adminis #menuAdmin1 ul a:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+#adminis #menuAdmin1 ul a i {
+    font-size: 5em;
+    border-radius: 50%;
+    padding: .5em;
+    background: #db6033;
+    background: -moz-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,96,51,1)), color-stop(97%, rgba(194,130,58,1)), color-stop(100%, rgba(194,130,58,1)));
+    background: -webkit-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: -o-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: -ms-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: linear-gradient(to bottom, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    transition: 1s;
+}
+
+#adminis #menuAdmin1 ul a i:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+    color: #fff;
+}
+
+#adminis #menuAdmin2 {
+    border: 1px solid orangered;
+    border-radius: 5px;
+    width: 80%;
+    margin: 4em auto;
+    padding: 4em 2em;
+}
+
+#adminis #menuAdmin2 ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+#adminis #menuAdmin2 ul li {
+    margin: 1em 0;
+    text-align: center;
+}
+
+#adminis #menuAdmin2 ul a {
+    color: #fcdabe;
+}
+
+#adminis #menuAdmin2 ul a:hover {
+    text-decoration: none;
+    cursor: default;
+}
+
+#adminis #menuAdmin2 ul a i {
+    font-size: 5.5em;
+    border-radius: 50%;
+    padding: .5em;
+    background: #db6033;
+    background: -moz-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(219,96,51,1)), color-stop(97%, rgba(194,130,58,1)), color-stop(100%, rgba(194,130,58,1)));
+    background: -webkit-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: -o-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: -ms-linear-gradient(top, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    background: linear-gradient(to bottom, rgba(219,96,51,1) 0%, rgba(194,130,58,1) 97%, rgba(194,130,58,1) 100%);
+    transition: 1s;
+}
+
+#adminis #menuAdmin2 ul a i:hover{
+    cursor: pointer;
+    transform: scale(1.3);
+    color: #fff;
+}
+
+/*--> Crear <--*/
+
+#adminis #crearUser {
+    margin: 1em auto;
+}
+
+#adminis .error {
+    width: 80%;
+    margin: 1em auto;
+}
+
+#adminis .error p {
+    background-color: rgba(218, 216, 216, 0.815);
+    padding: .2em;
+    margin: .2em 0;
+    font-size: .8em;
+    border-left: 3px solid rgb(163, 3, 3);
+}
+
+#adminis .mensaje {
+    display: block;
+    width: 90%;
+    background-color: rgb(116, 218, 116);
+    padding: .5em;
+    margin: 1em auto;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
+#adminis #crearUser form {
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#adminis #crearUser form #contenido {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 1em 0;
+    border: 1px solid orangered;
+    border-radius: 5px;
+}
+
+#adminis #crearUser form input{
+    width: 80%;
+    padding: .3em .5em;
+}
+
+#adminis #crearUser form input[type='submit'] {
+    width: 30%;
+    margin: 1em 0;
+    border: none;
+    background-color: #3963d6;
+    color: #fff;
+    text-transform: uppercase;
+    padding: .2em .8em;
+    border-radius: 5px;
+    transition: .5s;
+}
+
+#adminis #crearUser form input[type='submit']:hover {
+    background-color: #6082df;
+    cursor: pointer;
+}
+
 /*--> Pie de página <--*/
 
 footer {
@@ -1077,6 +1289,7 @@ footer ul i {
 
     #homePrincipal #formuRegis .mensaje {
         width: 30%;
+        font-size: 1em;
     }
 
     #homePrincipal #formuRegis #contenido {
@@ -1215,6 +1428,18 @@ footer ul i {
         justify-content: flex-end;
     }
 
+    #tuto .error {
+        width: 50%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
+    #tuto .mensaje {
+        width: 50%;
+        margin: 1em auto;
+        font-size: 1em;
+    }
+
     #aluSelec {
         font-size: 1em;
     }
@@ -1285,6 +1510,62 @@ footer ul i {
     
     #horarioAlum .horarioDias td:nth-child(1) {
         border-right: 2px solid #fff;
+    }
+
+    /***********************************/
+    /*--> A D M I N I S T R A D O R <--*/
+    /***********************************/
+
+    #adminis {
+        font-size: initial;
+    }
+
+    #adminis #menuAdmin1 ul {
+        flex-direction: row;
+    }
+
+    #adminis #menuAdmin1 ul li {
+        width: 30%;
+        margin: auto;
+    }
+
+    #adminis #menuAdmin2 ul {
+        flex-direction: row;
+    }
+    
+    #adminis #menuAdmin2 ul li {
+        width: 40%;
+        margin: auto;
+    }
+
+    /*--> Crear <--*/
+
+    #adminis #crearUser {
+        width: 80%;
+        margin: 2em auto;
+    }
+
+    #adminis .error {
+        width: 30%;
+        margin: 1em auto;
+    }
+
+    #adminis .error p {
+        font-size: 1em;
+    }
+    
+    #adminis .mensaje {
+        font-size: 1em;
+        width: 50%;
+    }
+
+    #adminis #crearUser form #contenido {
+        width: 60%;
+    }
+
+    #adminis #crearUser form input{
+        width: 50%;
+        padding: .3em .5em;
     }
 
 /* Tablets en horizontal o escritorios normales */
@@ -1603,22 +1884,34 @@ footer ul i {
     /*--> P R O F E S O R <--*/
     /*************************/
 
-    /*--> HOME PROFE <--*/
-
-    
-
     /*--> ASIGNATURAS PROFE <--*/
 
     #alumnosP .error {
         width: 30%;
-        margin: 1em auto;
-        font-size: 1em;
     }
 
     #alumnosP .mensaje {
         width: 30%;
-        margin: 1em auto;
-        font-size: 1em;
+    }
+
+    /*--> TUTORIA PROFE <--*/
+
+    #tuto .error {
+        width: 30%;
+    }
+
+    #tuto .mensaje {
+        width: 30%;
+    }
+
+    /***********************************/
+    /*--> A D M I N I S T R A D O R <--*/
+    /***********************************/
+
+    /*--> Crear <--*/
+    
+    #adminis .mensaje {
+        width: 30%;
     }
 
 }

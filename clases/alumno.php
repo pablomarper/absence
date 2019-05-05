@@ -173,7 +173,7 @@ class Alumno extends DBAbstractModel
         }
     }
 
-    public function faltas($cod) 
+    public function faltas($cod, $mes) 
     {
         if ($cod != "") {
             $this->query = "
@@ -182,7 +182,7 @@ class Alumno extends DBAbstractModel
 	            ON t.id_tipo = f.id_tipo INNER JOIN alumnos a
     	            ON f.id_alu = a.dni INNER JOIN asignaturas asi
         	            ON f.id_asigna = asi.id_asigna
-            WHERE a.dni = '$cod'
+            WHERE a.dni = '$cod' AND f.dia LIKE '%/$mes'
             ";
 
             $this->get_results_from_query();

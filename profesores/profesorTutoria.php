@@ -9,8 +9,11 @@
 
             if (isset($_POST['justi'])) {
                 $faltasJusti = $_POST['justi'];
+                $cont = 0;
 
                 foreach ($faltasJusti as $valor) {
+                    $cont++;
+
                     $falta = new Falta();
                     $falta->get($valor);
 
@@ -18,6 +21,15 @@
 
                     $falta->justificar($datosFalta);
                 }
+
+                if ($cont > 1) {
+                    echo "<p class='mensaje'>Incidencias justificadas</p>";
+                } else {
+                    echo "<p class='mensaje'>Incidencia justificada</p>";
+                }
+            
+            } else {
+                echo "<p class='error'>No ha justificado ninguna incidencia</p>";
             }
             
         }
@@ -56,7 +68,7 @@
                     <td>
                         <?php echo $cont?>
                     </td>
-                    <td>
+                    <td <?php if (isset($_GET['a'])){ if ($_GET['a'] == $valor['dni']){ echo "class='seleccionado'";}}?>>
                         <?php echo $valor['apellido1'] . " " . $valor['apellido2'] . ", " . $valor['nombre']?>
                         <input type="hidden" name="alumno<?php echo $cont?>" value="<?php echo $valor['dni']?>">
                     </td>
@@ -65,8 +77,10 @@
                     </td>
                     <td>
                         <?php
+                        $mes = date('m/Y');
+
                         $alumno = new Alumno();
-                        $alumno->faltas($valor['dni']);
+                        $alumno->faltas($valor['dni'], $mes);
                 
                         $incidencias = $alumno->getIncidencias();
 
@@ -96,7 +110,7 @@
         $idAlu = $_GET['a'];
         
         $alumno = new Alumno();
-        $alumno->faltas($idAlu);
+        $alumno->faltas($idAlu, $mes);
 
         $incidencias = $alumno->getIncidencias();
 

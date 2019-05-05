@@ -8,6 +8,8 @@ class Admin extends DBAbstractModel
     private $user;
     private $passw;
     private $nombre;
+    private $profesores = array();
+    private $alumnos = array();
 
     function __construct()
     {
@@ -49,6 +51,29 @@ class Admin extends DBAbstractModel
 
         return $this;
     }
+    public function getProfesores()
+    {
+        return $this->profesores;
+    }
+
+    public function setProfesores($profesores)
+    {
+        $this->profesores = $profesores;
+
+        return $this;
+    }
+
+    public function getAlumnos()
+    {
+        return $this->alumnos;
+    }
+
+    public function setAlumnos($alumnos)
+    {
+        $this->alumnos = $alumnos;
+
+        return $this;
+    }
 
     public function login($user, $pass)
     {
@@ -63,6 +88,40 @@ class Admin extends DBAbstractModel
         if (count($this->rows) == 1) {
             foreach ($this->rows[0] as $propiedad => $valor) {
                 $this->$propiedad = $valor;
+            }
+        }
+    }
+
+    public function profes() {
+        
+        $this->query = "
+        SELECT p.*
+        FROM profesores p
+        ";
+
+        $this->get_results_from_query();
+
+        if (count($this->rows) > 0){
+
+            for ($i = 0; $i < count($this->rows); $i++) {
+                $this->profesores[$i] = $this->rows[$i];
+            }
+        }
+    }
+
+    public function alumnos() {
+        
+        $this->query = "
+        SELECT p.*
+        FROM alumnos p
+        ";
+
+        $this->get_results_from_query();
+
+        if (count($this->rows) > 0){
+
+            for ($i = 0; $i < count($this->rows); $i++) {
+                $this->alumnos[$i] = $this->rows[$i];
             }
         }
     }

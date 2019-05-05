@@ -10,7 +10,7 @@ class PDF extends FPDF
 {
     public function imprime_incidencia($id)
 	{
-		
+		$mes = date('m/Y');
         $alu = new Alumno();
         $alu->get($id);
 
@@ -19,7 +19,7 @@ class PDF extends FPDF
         $nombreAlu = $alu->getNombre();
 
         $alumno = new Alumno();
-        $alumno->faltas($id);
+        $alumno->faltas($id, $mes);
 
         $incidencias = $alumno->getIncidencias();
 

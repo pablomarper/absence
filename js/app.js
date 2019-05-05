@@ -1,5 +1,65 @@
-
 /* JavaScript */
+
+// Función para crear usuarios por el administrador
+
+function crearUser(e) {
+    var formularioValido = true;
+    e.preventDefault();
+
+    var tipo = document.getElementById('tipo').value;
+    var nombre = document.getElementById('nombre').value;
+    var apellido1 = document.getElementById('ape1').value;
+    var apellido2 = document.getElementById('ape2').value;
+    var email = document.getElementById('email').value;
+    var user = document.getElementById('usuario').value;
+    var pass = document.getElementById('passw').value;
+    var repass = document.getElementById('repassw').value;
+
+    var camposTexto = camposConContenido(nombre, apellido1, apellido2);
+    var emailValido = emailCorrecto(email);
+    var passValida = passCorrecta(pass, repass);
+
+    $('.error').remove();
+    $('.titulos').after('<div class="error"></div>');
+
+    if (!camposTexto) {
+        $('.error').append('<p>Nombre y apellidos del usuario obligatorios</p>');
+        formularioValido = false;
+    }
+
+    if (!emailValido) {
+        $('.error').append('<p>Email incorrecto</p>');
+        formularioValido = false;
+    }
+
+    if (!passValida) {
+        $('.error').append('<p>Contraseña incorrecta</p>');
+        formularioValido = false;
+    }
+
+    console.log(formularioValido);
+
+    if (formularioValido) {
+        console.log('HOLA');
+        $.ajax({
+            type: 'POST',
+            url: 'registrar.php',
+            data: {'tipo': tipo, 'user': user, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
+            success: function () {
+                $('.error').remove();
+                $('.titulos').after("<p class='mensaje'>Usuario Creado</p>");
+
+                $('#usuario').val("");
+                $('#nombre').val("");
+                $('#ape1').val("");
+                $('#ape2').val("");
+                $('#email').val("");
+                $('#passw').val("");
+                $('#repassw').val("");
+            }
+        });
+    }
+}
 
 // Función para validar formulario de registro
 
@@ -261,9 +321,6 @@ if (FormuIncidencia) {
         
     }, false);
 }
-
-
-
 
 // Función para comprobar si el tipo de usuario es correcto
 
