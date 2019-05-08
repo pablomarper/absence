@@ -423,15 +423,13 @@ main{
     right: 2em;
     transition: 1s all;
     z-index: 10000;
-    color: rgba(241, 100, 48, 0.651);
+    color: rgba(0, 0, 0, 0.76);
     border: none;
     background-color: transparent;
 }
 
-
-
 #btnUp i {
-    font-size: 2.7em;
+    font-size: 3em;
 }
 
 /*--> PERFIL <--*/
