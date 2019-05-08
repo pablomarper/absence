@@ -14,8 +14,10 @@
 
         if ($admin == 'crear') {
             include('administrador/crearUser.php');
+        } else if ($admin == 'editar'){
+            include('administrador/modificarUser.php');
         } else {
-            
+            include('administrador/eliminarUser.php');
         }
 
     } else {

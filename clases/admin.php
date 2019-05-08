@@ -97,6 +97,7 @@ class Admin extends DBAbstractModel
         $this->query = "
         SELECT p.*
         FROM profesores p
+        ORDER BY p.apellido1 
         ";
 
         $this->get_results_from_query();
@@ -112,8 +113,9 @@ class Admin extends DBAbstractModel
     public function alumnos() {
         
         $this->query = "
-        SELECT p.*
-        FROM alumnos p
+        SELECT al.*
+        FROM alumnos al
+        ORDER BY al.apellido1 
         ";
 
         $this->get_results_from_query();

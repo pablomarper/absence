@@ -37,17 +37,19 @@ function crearUser(e) {
         formularioValido = false;
     }
 
-    console.log(formularioValido);
-
     if (formularioValido) {
-        console.log('HOLA');
         $.ajax({
             type: 'POST',
             url: 'registrar.php',
-            data: {'tipo': tipo, 'user': user, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
+            data: { 'tipo': tipo, 'user': user, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
             success: function () {
                 $('.error').remove();
-                $('.titulos').after("<p class='mensaje'>Usuario Creado</p>");
+
+                if (tipo == '1') {
+                    $('.titulos').after("<p class='mensaje'>Profesor Creado</p>");
+                } else {
+                    $('.titulos').after("<p class='mensaje'>Alumno Creado</p>");
+                }
 
                 $('#usuario').val("");
                 $('#nombre').val("");
@@ -58,6 +60,131 @@ function crearUser(e) {
                 $('#repassw').val("");
             }
         });
+    }
+}
+
+// Función para editar usuarios por el administrador
+
+function editarUser(e) {
+    var formularioValido = true;
+    e.preventDefault();
+
+    var tipo = document.getElementById('tipo').value;
+    var dni = document.getElementById('dni').value;
+    var nombre = document.getElementById('nom').value;
+    var apellido1 = document.getElementById('apellido1').value;
+    var apellido2 = document.getElementById('apellido2').value;
+    var email = document.getElementById('correo').value;
+    var pass = document.getElementById('password').value;
+    var repass = document.getElementById('password2').value;
+
+    var camposTexto = camposConContenido(nombre, apellido1, apellido2);
+    var emailValido = emailCorrecto(email);
+    var passValida = passCorrecta(pass, repass);
+
+    $('.error').remove();
+    $('.titulos').after('<div class="error"></div>');
+
+    if (!camposTexto) {
+        $('.error').append('<p>Nombre y apellidos del usuario obligatorios</p>');
+        formularioValido = false;
+    }
+
+    if (!emailValido) {
+        $('.error').append('<p>Email incorrecto</p>');
+        formularioValido = false;
+    }
+
+    if (!passValida) {
+        $('.error').append('<p>Contraseña incorrecta</p>');
+        formularioValido = false;
+    }
+
+    if (formularioValido) {
+
+        if (tipo == '1') {
+            var url = 'profesores/modificarProfesor.php';
+        } else {
+            var url = 'alumnos/modificarAlumno.php';
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: { 'user': dni, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
+            success: function () {
+                $('.error').remove();
+
+                if (tipo == '1') {
+                    $('.titulos').after("<p class='mensaje'>Profesor Modificado</p>");
+                } else {
+                    $('.titulos').after("<p class='mensaje'>Alumno Modificado</p>");
+                }
+
+                $('#nom').val("");
+                $('#apellido1').val("");
+                $('#apellido2').val("");
+                $('#correo').val("");
+                $('#password').val("");
+                $('#password2').val("");
+            }
+        });
+    }
+}
+
+// Función para eliminar usuarios por el administrador
+
+function deleteUser(e) {
+    var formularioValido = false;
+    e.preventDefault();
+
+    var tipo = document.getElementById('tipo').value;
+    var contador = document.getElementById('contador').value;
+    var ninguno = true;
+    var cont = 0;
+
+    for (let i = 0; i < contador; i++) {
+        if (document.getElementById('delete' + i).checked) {
+            cont++;
+            if (ninguno) {
+                console.log('HOLA');
+            }
+
+            ninguno = false;
+            var dni = document.getElementById('delete' + i).value;
+
+            $.ajax({
+                type: 'POST',
+                url: 'eliminar.php',
+                data: { 'tipo': tipo, 'user': dni },
+                success: function () {
+                    $('.error').remove();
+
+                    $('#delete' + i).prop('checked', false);
+                }
+            });
+        }
+    }
+
+    if (ninguno) {
+        $('.error').remove();
+        $('.titulos').after('<div class="error"></div>');
+        $('.error').append('<p>Selecciona al menos un usuario</p>');
+    } else {
+        if (cont > 1) {
+            if (tipo == '1') {
+                $('.titulos').after("<p class='mensaje'>Profesores Eliminados</p>");
+            } else {
+                $('.titulos').after("<p class='mensaje'>Alumnos Eliminados</p>");
+            }
+        } else {
+            if (tipo == '1') {
+                $('.titulos').after("<p class='mensaje'>Profesor Eliminado</p>");
+            } else {
+                $('.titulos').after("<p class='mensaje'>Alumno Eliminado</p>");
+            }
+        }
+        
     }
 }
 
@@ -248,59 +375,59 @@ var FormuIncidencia = document.getElementById('formuInci');
 
 if (FormuIncidencia) {
     FormuIncidencia.addEventListener('submit', function (e) {
-    
+
         e.preventDefault();
-    
+
         var contador = document.getElementById('contador').value;
         var asignatura = document.getElementById('asignaSelec').value;
         var inciMin = false;
         var numIncidencias = 0;
-        
+
         for (let i = 1; i < contador; i++) {
             var incidencia = document.getElementById('incidencias' + i).value;
-    
+
             if (incidencia != 0) {
                 numIncidencias++;
                 inciMin = true;
                 var alu = document.getElementById('alumno' + i).value;
-    
+
                 var hoy = new Date();
-    
+
                 var dia = hoy.getDate();
-    
+
                 if (dia < 10) {
                     dia = "0" + dia;
                 }
-    
+
                 var mes = hoy.getMonth() + 1;
-    
+
                 if (mes < 10) {
                     mes = "0" + mes;
                 }
-    
+
                 var ahoraD = dia + "/" + mes + "/" + hoy.getFullYear();
-    
+
                 var min = hoy.getMinutes();
-    
+
                 if (min < 10) {
                     min = "0" + min;
                 }
-    
+
                 var hora = hoy.getHours();
-    
+
                 if (hora < 10) {
                     hora = "0" + hora;
                 }
-    
+
                 var ahoraH = hora + ":" + min;
-    
+
                 $.ajax({
                     type: 'POST',
                     url: 'profesores/addIncidencias.php',
                     data: { 'ahoraD': ahoraD, 'ahoraH': ahoraH, 'alu': alu, 'asignatura': asignatura, 'incidencia': incidencia },
                     success: function () {
                         $('#alumnosP .error').remove();
-                        
+
                         for (let i = 1; i < contador; i++) {
                             $('#incidencias' + i).val("0")
                         }
@@ -318,7 +445,7 @@ if (FormuIncidencia) {
                 $('#alumnosP h3').after("<p class='mensaje'>Incidencia Añadida</p>");
             }
         }
-        
+
     }, false);
 }
 
@@ -379,7 +506,7 @@ $(document).ready(function ($) {
 
     /* Cargar Asignaturas */
 
-    $('#alumnosP #asignaturas').change(function() {
+    $('#alumnosP #asignaturas').change(function () {
 
         var asignatura = $(this).val();
         var idUser = $('#alumnosP #idUsuario').val();
@@ -387,9 +514,26 @@ $(document).ready(function ($) {
 
         if (param != null) {
             $('#cursos').load('cursos.php?asig=' + asignatura + '&id=' + idUser + '&param=si');
-        }else {
+        } else {
             $('#cursos').load('cursos.php?asig=' + asignatura + '&id=' + idUser);
         }
     });
 
+    /* Habilitar boton, hacer visible div de modificar usuarios */
+
+    $('#adminis #editarUser select').change(function () {
+        $('.error').remove();
+
+        var user = $(this).val();
+
+        $('#adminis #editarUser #formulario #dni').val(user);
+        $('#adminis #editarUser #formulario #password').val("");
+        $('#adminis #editarUser #formulario #password2').val("");
+        $('#adminis #editarUser #formulario #nom').val("");
+        $('#adminis #editarUser #formulario #apellido1').val("");
+        $('#adminis #editarUser #formulario #apellido2').val("");
+        $('#adminis #editarUser #formulario #correo').val("");
+
+        $('#adminis #editarUser #formulario').css('display', 'block');
+    });
 });

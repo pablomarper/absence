@@ -504,9 +504,10 @@ main{
 #perfil #datos form table input {
     border-radius: 5px;
     border: 1px solid orangered;
+    padding: .1em .5em;
 }
 
-#perfil #datos form table td:nth-last-child(1) {
+#perfil #datos form #formu td:nth-last-child(1) {
     text-align: center;
 }
 
@@ -1195,6 +1196,137 @@ main{
     cursor: pointer;
 }
 
+/*--> Modificar <--*/
+
+#adminis #editarUser {
+    margin: 2em auto;
+    padding: 2em;
+    border: 1px solid orangered;
+    border-radius: 5px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: .8em;
+}
+
+#adminis #editarUser #contenido {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 2em 1em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#adminis #editarUser #contenido select {
+    padding: .5em;
+    border: none;
+}
+
+#adminis #editarUser #contenido option {
+    margin: .1em;
+}
+
+#adminis #editarUser #formulario {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+#adminis #editarUser #formulario form td {
+    padding: .2em;
+}
+
+#adminis #editarUser #formulario form #dni {
+    text-align: center;
+    border: none;
+}
+
+#adminis #editarUser #formulario form input {
+    border: 1px solid orangered;
+    padding: .1em .3em;
+}
+
+#adminis #editarUser #formulario td:nth-child(1) {
+    font-weight: bold;
+    padding-right: .8em;
+}
+
+#adminis #editarUser #formulario form tr:nth-last-child(1) td {
+    text-align: center;
+}
+
+#adminis #editarUser #formulario form input[type='submit'] {
+    border: none;
+    background-color: #3963d6;
+    border-radius: 5px;
+    color: #fff;
+    margin: 1em auto;
+    padding: .2em 1em;
+    display: block;
+    width: 80%;
+    transition: .5s;
+}
+
+#adminis #editarUser #formulario form input[type='submit']:hover {
+    background-color: #6082df;
+    cursor: pointer;
+}
+
+/*--> Eliminar <--*/
+
+#adminis #deleteUser {
+    margin: 2em auto;
+    padding: 2em;
+    border: 1px solid orangered;
+    border-radius: 5px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: .8em;
+}
+
+#adminis #deleteUser #contenido {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 2em 1em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+#adminis #deleteUser #contenido table {
+    margin: auto;
+}
+
+#adminis #deleteUser #contenido tr:nth-child(1) td:nth-child(1) {
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#adminis #deleteUser #contenido td:nth-child(1) {
+    text-align: left;
+    padding-right: .6em;
+}
+
+#adminis #deleteUser form input[type='submit'] {
+    border: none;
+    background-color: #3963d6;
+    border-radius: 5px;
+    color: #fff;
+    padding: .2em 1em;
+    transition: .5s;
+    margin: auto;    
+    width: 80%;
+    display: block;
+}
+
+#adminis #deleteUser form input[type='submit']:hover {
+    background-color: #6082df;
+    cursor: pointer;
+}
+
 /*--> Pie de página <--*/
 
 footer {
@@ -1336,6 +1468,11 @@ footer ul i {
     #perfil #datos table td:nth-child(2) {
         width: initial;
         text-align: initial;
+    }
+
+    #perfil #datos table tr:nth-last-child(1) td {
+        width: 160px;
+        display: table-cell;
     }
 
     #perfil .mensaje {
@@ -1520,22 +1657,12 @@ footer ul i {
         font-size: initial;
     }
 
-    #adminis #menuAdmin1 ul {
-        flex-direction: row;
+    #adminis #menuAdmin1 {
+        width: 50%;
     }
 
-    #adminis #menuAdmin1 ul li {
-        width: 30%;
-        margin: auto;
-    }
-
-    #adminis #menuAdmin2 ul {
-        flex-direction: row;
-    }
-    
-    #adminis #menuAdmin2 ul li {
-        width: 40%;
-        margin: auto;
+    #adminis #menuAdmin2 {
+        width: 50%;
     }
 
     /*--> Crear <--*/
@@ -1546,7 +1673,7 @@ footer ul i {
     }
 
     #adminis .error {
-        width: 30%;
+        width: 50%;
         margin: 1em auto;
     }
 
@@ -1568,6 +1695,35 @@ footer ul i {
         padding: .3em .5em;
     }
 
+    /*--> Modificar <--*/
+
+    #adminis #editarUser {
+        margin: 3em auto;
+        width: 70%;
+        font-size: 1em;
+    }
+
+    #adminis #editarUser #contenido {
+        width: 100%;
+    }
+
+    #adminis #editarUser #formulario table{
+        margin: auto;
+    }
+
+    /*--> Eliminar <--*/
+
+    #adminis #deleteUser {
+        margin: 3em auto;
+        width: 70%;
+        font-size: 1em;
+    }
+
+    #adminis #deleteUser #contenido {
+        width: 100%;
+    }
+
+}
 /* Tablets en horizontal o escritorios normales */
 
 @media (min-width: 1024px){
@@ -1908,12 +2064,64 @@ footer ul i {
     /*--> A D M I N I S T R A D O R <--*/
     /***********************************/
 
+    #adminis #menuAdmin1 {
+        width: 80%;
+    }
+
+    #adminis #menuAdmin1 ul {
+        flex-direction: row;
+    }
+
+    #adminis #menuAdmin1 ul li {
+        width: 30%;
+        margin: auto;
+    }
+    
+    #adminis #menuAdmin2 {
+        width: 80%;
+    }
+
+    #adminis #menuAdmin2 ul {
+        flex-direction: row;
+    }
+
+    #adminis #menuAdmin2 ul li {
+        width: 40%;
+        margin: auto;
+    }
+
     /*--> Crear <--*/
+
+    #adminis .error {
+        width: 30%;
+    }
     
     #adminis .mensaje {
         width: 30%;
     }
 
+    /*--> Modificar <--*/
+
+    #adminis #editarUser {
+        margin: 4em auto;
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #adminis #editarUser #contenido {
+        margin: 0;
+        width: initial;
+    }
+
+    /*--> Eliminar <--*/
+
+    #adminis #deleteUser {
+        margin: 4em auto;
+        width: 75%;
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 /* Escritorios muy anchos */

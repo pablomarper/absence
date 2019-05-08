@@ -156,6 +156,16 @@ class Alumno extends DBAbstractModel
         $this->execute_single_query();
     }
 
+    public function delete($dni = '')
+    {
+        $this->query = "
+		DELETE FROM alumnos
+		WHERE dni = '$dni'
+        ";
+        
+        $this->execute_single_query();
+    }
+
     public function login($user, $pass)
     {
         $this->query = "

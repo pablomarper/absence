@@ -141,48 +141,66 @@ if (isset($_POST['acceder'])) {
                                     </a>
                                 </li>
                             <?php
-                        } else {
-                            if (isset($_SESSION['login']['tutor'])) {
-                                ?>
-                                    <li>
-                                        <a href="index.php?p=profeHome">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <i class="fa fa-home" aria-hidden="true"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="nomb">Inicio</span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index.php?p=profeAsig">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <i class="fas fa-users" aria-hidden="true"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="nomb">Alumnos</span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </a>
-                                    </li>
-                                    <?php
-                                    if ($_SESSION['login']['tutor'] == "SI") { ?>
+                            } else {
+                                if (isset($_SESSION['login']['tutor'])) {
+                                    ?>
                                         <li>
-                                            <a href="index.php?p=profeTuto">
+                                            <a href="index.php?p=profeHome">
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                                            <i class="fa fa-home" aria-hidden="true"></i>
                                                         </td>
                                                         <td>
-                                                            <span class="nomb">Tutoría</span>
+                                                            <span class="nomb">Inicio</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="index.php?p=profeAsig">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <i class="fas fa-users" aria-hidden="true"></i>
+                                                        </td>
+                                                        <td>
+                                                            <span class="nomb">Alumnos</span>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </a>
+                                        </li>
+                                        <?php
+                                        if ($_SESSION['login']['tutor'] == "SI") { ?>
+                                            <li>
+                                                <a href="index.php?p=profeTuto">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                                            </td>
+                                                            <td>
+                                                                <span class="nomb">Tutoría</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </a>
+                                            </li>
+                                        <?php
+                                    }
+                                } else {
+                                    ?>
+                                        <li>
+                                            <a href="index.php?p=alumnoHom">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                                        </td>
+                                                        <td>
+                                                            <span class="nomb">Inicio</span>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -190,24 +208,6 @@ if (isset($_POST['acceder'])) {
                                         </li>
                                     <?php
                                 }
-                            } else {
-                                ?>
-                                    <li>
-                                        <a href="index.php?p=alumnoHom">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <i class="fa fa-home" aria-hidden="true"></i>
-                                                    </td>
-                                                    <td>
-                                                        <span class="nomb">Inicio</span>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </a>
-                                    </li>
-                                <?php
-                            }
                             ?>
                                 <li>
                                     <a href="index.php?p=perfilUse">
@@ -237,11 +237,11 @@ if (isset($_POST['acceder'])) {
                                         </table>
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
-                    <?php
-                }
-                ?>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                    </li>
                 </ul>
                 <ul id="user">
                     <li>

@@ -1,7 +1,7 @@
 <div id="crearUser">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" onSubmit="crearUser(event)">
         <div id="contenido">
-            <input type="text" name="usuario" id="usuario" placeholder="DNI"><br>
+            <input type="text" name="usuario" id="usuario" placeholder="DNI" autofocus><br>
 
             <input type="password" name="passw" id="passw" placeholder="Contraseña"><br>
 
@@ -23,7 +23,6 @@
                 echo "<input type='hidden' name='tipo' id='tipo' value='2'>";
             }
         ?>
-        <input type="hidden" name="">
 
         <input type="submit" value="Crear" name="crear" id="crear">
     </form>

@@ -56,7 +56,7 @@
         <?php
                 }
         ?>
-            <table>
+            <table id="formu">
                 <tr>
                     <td>
                         DNI/Usuario:
