@@ -1809,6 +1809,12 @@ footer ul i {
         margin-right: .8em;
     }
 
+    /*--> Contenido <--*/
+
+    #goUp {
+        display: none;
+    }
+
     /*--> Inicio de sesion <--*/
 
     #homePrincipal #formu {

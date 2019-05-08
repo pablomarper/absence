@@ -77,7 +77,7 @@
                                 <table>
                                     <tr>
                                         <td class="arrow">
-                                            <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] ?>"><i class="fas fa-angle-double-right"></i></a>
+                                            <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] ?>?e"><i class="fas fa-angle-double-right"></i></a>
                                         </td>
                                     </tr>
                                 </table>
@@ -275,7 +275,10 @@
                 ?>
             </div>
 
-            <button id="btnUp"><i class="far fa-caret-square-up"></i></button>
+            <div id="goUp">
+                <button id="btnUp"><i class="far fa-caret-square-up"></i></button>
+            </div>
+            
         </main>
 
         <?php
