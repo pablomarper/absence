@@ -61,7 +61,8 @@
                         if (isset($_GET['mO'])) {
 
                             if (isset($_GET['p'])) {
-                                $url = substr($_SERVER['REQUEST_URI'], 0, 30);
+                                $pos = strrpos($_SERVER['REQUEST_URI'], '&');
+                                $url = substr($_SERVER['REQUEST_URI'], 0, $pos);
                                 ?>
                                 <table>
                                     <tr>
