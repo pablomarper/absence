@@ -417,6 +417,23 @@ main{
     margin-right: .2em;
 }
 
+#btnUp {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    transition: 1s all;
+    z-index: 10000;
+    color: rgba(241, 100, 48, 0.651);
+    border: none;
+    background-color: transparent;
+}
+
+
+
+#btnUp i {
+    font-size: 2.7em;
+}
+
 /*--> PERFIL <--*/
 
 #perfil {

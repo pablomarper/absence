@@ -67,7 +67,7 @@
                                 <table>
                                     <tr>
                                         <td class="arrow">
-                                            <a href="<?php echo $url ?>"><i class="fas fa-angle-double-right"></i></a>
+                                            <a id="flech" href="<?php echo $url ?>"><i class="fas fa-angle-double-right"></i></a>
                                         </td>
                                     </tr>
                                 </table>
@@ -77,7 +77,7 @@
                                 <table>
                                     <tr>
                                         <td class="arrow">
-                                            <a href="<?php echo $_SERVER['PHP_SELF'] ?>"><i class="fas fa-angle-double-right"></i></a>
+                                            <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] ?>"><i class="fas fa-angle-double-right"></i></a>
                                         </td>
                                     </tr>
                                 </table>
@@ -89,7 +89,7 @@
                             <table>
                                 <tr>
                                     <td class="arrow">
-                                        <a href="<?php echo $_SERVER['PHP_SELF'] . $param ?>&mO=si"><i class="fas fa-angle-double-left"></i></a>
+                                        <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] . $param ?>&mO=si"><i class="fas fa-angle-double-left"></i></a>
                                     </td>
                                 </tr>
                             </table>
@@ -99,7 +99,7 @@
                             <table>
                                 <tr>
                                     <td class="arrow">
-                                        <a href="<?php echo $_SERVER['PHP_SELF'] ?>?mO=si"><i class="fas fa-angle-double-left"></i></a>
+                                        <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] ?>?mO=si"><i class="fas fa-angle-double-left"></i></a>
                                     </td>
                                 </tr>
                             </table>
@@ -274,6 +274,8 @@
                 }
                 ?>
             </div>
+
+            <button id="btnUp"><i class="far fa-caret-square-up"></i></button>
         </main>
 
         <?php

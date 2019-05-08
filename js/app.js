@@ -58,9 +58,15 @@ function crearUser(e) {
                 $('#email').val("");
                 $('#passw').val("");
                 $('#repassw').val("");
+
+                setTimeout(function() {
+                    $('.mensaje').fadeOut(2000);
+                }, 4000);
             }
         });
     }
+    
+    $('html, body').animate({scrollTop:0}, 'slow');
 }
 
 // Función para editar usuarios por el administrador
@@ -127,15 +133,20 @@ function editarUser(e) {
                 $('#correo').val("");
                 $('#password').val("");
                 $('#password2').val("");
+
+                setTimeout(function() {
+                    $('.mensaje').fadeOut(2000);
+                }, 4000);
             }
         });
     }
+    
+    $('html, body').animate({scrollTop:0}, 'slow');
 }
 
 // Función para eliminar usuarios por el administrador
 
 function deleteUser(e) {
-    var formularioValido = false;
     e.preventDefault();
 
     var tipo = document.getElementById('tipo').value;
@@ -166,6 +177,8 @@ function deleteUser(e) {
         }
     }
 
+    $('html, body').animate({scrollTop:0}, 'slow');
+
     if (ninguno) {
         $('.error').remove();
         $('.titulos').after('<div class="error"></div>');
@@ -184,6 +197,10 @@ function deleteUser(e) {
                 $('.titulos').after("<p class='mensaje'>Alumno Eliminado</p>");
             }
         }
+
+        setTimeout(function() {
+            $('.mensaje').fadeOut(2000);
+        }, 4000);
         
     }
 }
@@ -254,9 +271,15 @@ function validarRegis(e) {
                 $('#email').val("");
                 $('#passw').val("");
                 $('#repassw').val("");
+
+                setTimeout(function() {
+                    $('.mensaje').fadeOut(2000);
+                }, 4000);
             }
         });
     }
+    
+    $('html, body').animate({scrollTop:0}, 'slow');
 }
 
 // Función para validar formulario de modificar profesor
@@ -309,9 +332,15 @@ function validarModifyProfe(e) {
                 $('#correo').val("");
                 $('#password').val("");
                 $('#password2').val("");
+
+                setTimeout(function() {
+                    $('.mensaje').fadeOut(2000);
+                }, 4000);
             }
         });
     }
+
+    $('html, body').animate({scrollTop:0}, 'slow');
 }
 
 // Función para validar formulario de modificar alumno
@@ -364,9 +393,15 @@ function validarModifyAlumno(e) {
                 $('#correo').val("");
                 $('#password').val("");
                 $('#password2').val("");
+
+                setTimeout(function() {
+                    $('.mensaje').fadeOut(2000);
+                }, 4000);
             }
         });
     }
+    
+    $('html, body').animate({scrollTop:0}, 'slow');
 }
 
 // Función para crear incidencia
@@ -436,6 +471,8 @@ if (FormuIncidencia) {
             }
         }
 
+        $('html, body').animate({scrollTop:0}, 'slow');
+
         if (!inciMin) {
             $('#alumnosP h3').after("<p class='error'>Indique alguna incidencia sobre algún alumno</p>");
         } else {
@@ -444,9 +481,64 @@ if (FormuIncidencia) {
             } else {
                 $('#alumnosP h3').after("<p class='mensaje'>Incidencia Añadida</p>");
             }
+
+            setTimeout(function() {
+                $('.mensaje').fadeOut(2000);
+            }, 4000);
         }
 
     }, false);
+}
+
+// Función para justificar incidencias
+
+function justificarInci(e) {
+    e.preventDefault();
+
+    var contador = document.getElementById('contador').value;
+    var ninguno = true;
+    var cont = 0;
+
+    for (let i = 0; i < contador; i++) {
+        
+        if (document.getElementById('justi' + i).checked) {
+            cont++;
+            if (ninguno) {
+            }
+
+            ninguno = false;
+            var id = document.getElementById('justi' + i).value;
+
+            $.ajax({
+                type: 'POST',
+                url: 'profesores/justificarInci.php',
+                data: {'id': id },
+                success: function () {
+                    $('.error').remove();
+
+                    $('#justi' + i).prop('checked', false);
+                }
+            });
+        }
+    }
+
+    if (ninguno) {
+        $('.error').remove();
+        $('.titulos').after("<p class='error'>No ha justificado ninguna incidencia</p>");
+    } else {
+        if (cont > 1) {
+            $('.titulos').after("<p class='mensaje'>Incidencias justificadas</p>");
+        } else {
+            $('.titulos').after("<p class='mensaje'>Incidencia justificada</p>");
+        }
+
+        $('html, body').animate({scrollTop:0}, 'slow');
+
+        setTimeout(function() {
+            $('.mensaje').fadeOut(2000);
+        }, 4000);
+        
+    }
 }
 
 // Función para comprobar si el tipo de usuario es correcto
@@ -536,4 +628,20 @@ $(document).ready(function ($) {
 
         $('#adminis #editarUser #formulario').css('display', 'block');
     });
+
+    $('#btnUp').hide();
+	$('#btnUp').click(function(){
+		$('body,html').animate({
+			scrollTop:0
+		},1000)
+	});
+	$(window).scroll(function () {
+		if ($(this).scrollTop() > 200) {
+			$('#btnUp').fadeIn();
+		}
+		else {
+			$('#btnUp').fadeOut();
+		}
+	});
+
 });

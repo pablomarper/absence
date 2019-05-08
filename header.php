@@ -102,7 +102,10 @@ if (isset($_POST['acceder'])) {
     <!-- Ajax -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <title>AbsenceApp</title>
+    <meta name="description" content="Absence App es una aplicación para hacer la educación más fácil tanto a los profesores como los alumnos" />
+    
+
+    <title>Absence App - Accede o Registrate</title>
 </head>
 
 <body>
@@ -224,7 +227,7 @@ if (isset($_POST['acceder'])) {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="index.php?p=login&d=off">
+                                    <a id="off" href="index.php?p=login&d=off">
                                         <table>
                                             <tr>
                                                 <td>

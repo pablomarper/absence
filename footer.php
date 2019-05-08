@@ -1,4 +1,4 @@
-        <footer>
+        <footer id="pie">
         <?php
             if (!isset($_POST['acceder']) && (!isset($_GET['p']) || $_GET['p'] == 'login' || $_GET['p'] == 'registrar') && !isset($_GET['mO'])) {
         ?>

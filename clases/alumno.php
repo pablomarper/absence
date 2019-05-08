@@ -193,6 +193,7 @@ class Alumno extends DBAbstractModel
     	            ON f.id_alu = a.dni INNER JOIN asignaturas asi
         	            ON f.id_asigna = asi.id_asigna
             WHERE a.dni = '$cod' AND f.dia LIKE '%/$mes'
+            ORDER BY f.dia DESC
             ";
 
             $this->get_results_from_query();

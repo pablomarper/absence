@@ -4,36 +4,6 @@
         <span>Tutoría</span>
     </h3>
 
-    <?php
-        if (isset($_POST['justificar'])) {
-
-            if (isset($_POST['justi'])) {
-                $faltasJusti = $_POST['justi'];
-                $cont = 0;
-
-                foreach ($faltasJusti as $valor) {
-                    $cont++;
-
-                    $falta = new Falta();
-                    $falta->get($valor);
-
-                    $datosFalta = array("id_falta" => $falta->getId_falta(), "id_tipo" => $falta->getId_tipo(), "id_alu" => $falta->getId_alu(), "id_asigna" => $falta->getId_asigna(), "dia" => $falta->getDia(), "hora" => $falta->getHora());
-
-                    $falta->justificar($datosFalta);
-                }
-
-                if ($cont > 1) {
-                    echo "<p class='mensaje'>Incidencias justificadas</p>";
-                } else {
-                    echo "<p class='mensaje'>Incidencia justificada</p>";
-                }
-            
-            } else {
-                echo "<p class='error'>No ha justificado ninguna incidencia</p>";
-            }
-            
-        }
-    ?>
     <div id="botones">
         <a href="profesores/profesorListar.php?id_pro=<?php echo $_SESSION['login']['id']?>" id="crearPDF" target="_blank"><i class="far fa-file-pdf"></i>PDF</a>
     </div>
@@ -116,7 +86,7 @@
 
         if (sizeof($incidencias) != 0) {
             ?>
-            <form action="index.php?p=profeTuto" method="post">
+            <form action="index.php?p=profeTuto" method="post" onSubmit="justificarInci(event)">
                 <table id="incidenciasTuto">
                     <tr class="normal">
                         <td>
@@ -160,8 +130,9 @@
                         </td>
                     </tr>
             <?php
-
+            $conta = 0;
             foreach ($incidencias as $valor) {
+                
                 echo "
                 <tr>
                     <td class='tipo'>" . $valor['descripcion'] . "</td>
@@ -171,12 +142,13 @@
                     <td>" . $valor['hora'] . "</td>
                     <td>" . $valor['justificada'] . "</td>";
                     if ($valor['justificada'] == 'SI') {
-                        echo "<td><input type='checkbox' value=" . $valor['id_falta'] . " name='justi[]' id='justi' disabled></td>";
+                        echo "<td><input type='checkbox' value=" . $valor['id_falta'] . " name='justi[]' id='justi". $conta ."' disabled></td>";
                     }else{
-                        echo "<td><input type='checkbox' value=" . $valor['id_falta'] . " name='justi[]' id='justi'></td>";
+                        echo "<td><input type='checkbox' value=" . $valor['id_falta'] . " name='justi[]' id='justi". $conta ."'></td>";
                     }
                     
                 echo "</tr>";
+                $conta++;
             }
         ?>
                 <tr>
@@ -185,6 +157,9 @@
                     </td>
                 </tr>
             </table>
+            <?php
+            echo "<input type='hidden' name='contador' id='contador' value='" . $conta . "'>";
+            ?>
         </form>
         
         <?php
