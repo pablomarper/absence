@@ -75,16 +75,16 @@
     <div class="slider">
         <ul>
             <li>
-                <img src="img/atentos.jpg" alt="">
+                <img src="img/atentos.jpg" alt="Niños en clase">
             </li>
             <li>
-                <img src="img/niñoFeliz.jpg" alt="">
+                <img src="img/niñoFeliz.jpg" alt="Feliz en clase">
             </li>
             <li>
-                <img src="img/niños.jpg" alt="">
+                <img src="img/niños.jpg" alt="Alumnos">
             </li>
             <li>
-                <img src="img/respeto.jpg" alt="">
+                <img src="img/respeto.jpg" alt="Educación">
             </li>
         </ul>
     </div>
@@ -95,10 +95,10 @@
             Ayudamos en todos los niveles educativos
         </p>
         <div>
-            <a href="img/infantil.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Educación Infantil"><img src="img/infantil.jpg" alt=""></a>
-            <a href="img/primaria.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Educación Primaria"><img src="img/primaria.jpg" alt=""></a>
-            <a href="img/secun.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Educación Secundaria"><img src="img/secun.jpg" alt=""></a>
-            <a href="img/bachiller.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Bachillerato"><img src="img/bachiller.jpg" alt=""></a>
+            <a href="img/infantil.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Educación Infantil"><img src="img/infantil.jpg" alt="Educación Infantil"></a>
+            <a href="img/primaria.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Educación Primaria"><img src="img/primaria.jpg" alt="Educación Primaria"></a>
+            <a href="img/secun.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Educación Secundaria"><img src="img/secun.jpg" alt="Educación Secundaria"></a>
+            <a href="img/bachiller.jpg" data-fancybox="galeria1" data-fancybox  data-caption="Bachillerato"><img src="img/bachiller.jpg" alt="Bachillerato"></a>
         </div>
     </div>
     

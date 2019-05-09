@@ -158,22 +158,27 @@ function deleteUser(e) {
         if (document.getElementById('delete' + i).checked) {
             cont++;
             if (ninguno) {
-                console.log('HOLA');
+                var respo = confirm("¿Seguro que desea eliminar este/estos usuarios?");
             }
 
-            ninguno = false;
-            var dni = document.getElementById('delete' + i).value;
+            if (respo) {
+                ninguno = false;
+                var dni = document.getElementById('delete' + i).value;
 
-            $.ajax({
-                type: 'POST',
-                url: 'eliminar.php',
-                data: { 'tipo': tipo, 'user': dni },
-                success: function () {
-                    $('.error').remove();
-
-                    $('#delete' + i).prop('checked', false);
-                }
-            });
+                $.ajax({
+                    type: 'POST',
+                    url: 'eliminar.php',
+                    data: { 'tipo': tipo, 'user': dni },
+                    success: function () {
+                        $('.error').remove();
+    
+                        $('#delete' + i).prop('checked', false);
+                    }
+                });
+            } else {
+                location.reload();
+                break;
+            }            
         }
     }
 
@@ -201,6 +206,10 @@ function deleteUser(e) {
         setTimeout(function() {
             $('.mensaje').fadeOut(2000);
         }, 4000);
+
+        setTimeout(function() {
+            location.reload();
+        }, 6000);
         
     }
 }
@@ -629,6 +638,8 @@ $(document).ready(function ($) {
         $('#adminis #editarUser #formulario').css('display', 'block');
     });
 
+    /* Función para el botón GoUp */
+    
     $('#btnUp').hide();
 	$('#btnUp').click(function(){
 		$('body,html').animate({

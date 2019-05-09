@@ -1,8 +1,8 @@
 <div id="homeP">
-    <h3 class="titulos">
+    <h2 class="titulos">
         <i class="fas fa-circle"></i>
         <span>Horario</span>
-    </h3>
+    </h2>
 
     <table id="horarioProfe">
         <tr class="horarioDias">

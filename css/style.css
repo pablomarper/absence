@@ -19,7 +19,6 @@
 
 #page .first{
     background-color: transparent;
-    height: 13vh;
     color: #fff;
     margin: .5em 0;
 }
@@ -1252,6 +1251,10 @@ main{
     padding: .2em;
 }
 
+#adminis #editarUser #formulario form table {
+    margin: auto;
+}
+
 #adminis #editarUser #formulario form #dni {
     text-align: center;
     border: none;
@@ -1390,7 +1393,6 @@ footer ul i {
 @media (min-width: 768px){
 
     #page .first{
-        height: 10vh;
     }
 
     /*--> Inicio de sesion <--*/
@@ -1412,10 +1414,6 @@ footer ul i {
         background-color: rgb(218, 128, 116);
         border: none;
         color: #000;
-    }
-
-    #homePrincipal #formu #separar {
-        margin: 1em;
     }
 
     #homePrincipal #formu input {
@@ -2149,6 +2147,10 @@ footer ul i {
 @media (min-width: 1200px){
 
     #page .first{
-        height: 13vh;
+        height: 10vh;
+    }
+
+    #homePrincipal #formu #separar {
+        margin: 1em;
     }
 }

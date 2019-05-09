@@ -1,10 +1,10 @@
 <div id="adminis">
-    <h3 class="titulos">
+    <h2 class="titulos">
         <i class="fas fa-circle"></i>
         <a href="index.php?p=administr">
             <span>Modo Administrador</span>
         </a>
-    </h3>
+    </h2>
     
     <?php
     if (isset($_GET['user'])) {

@@ -1,8 +1,8 @@
 <div id="perfil">
-    <h3 class="titulos">
+    <h2 class="titulos">
         <i class="fas fa-circle"></i>
         <span>Perfil</span>
-    </h3>
+    </h2>
 
     <?php
     if (isset($_SESSION['login']['tutor'])) {

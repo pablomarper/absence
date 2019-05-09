@@ -1,8 +1,8 @@
 <div id="alumnosP">
-    <h3 class="titulos">
+    <h2 class="titulos">
         <i class="fas fa-circle"></i>
         <span>Alumnos</span>
-    </h3>
+    </h2>
 
     <input type="hidden" id="idUsuario" value="<?php echo $_SESSION['login']['id'] ?>">
     

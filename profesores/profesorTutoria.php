@@ -1,8 +1,8 @@
 <div id="tuto">
-    <h3 class="titulos">
+    <h2 class="titulos">
         <i class="fas fa-circle"></i>
         <span>Tutoría</span>
-    </h3>
+    </h2>
 
     <div id="botones">
         <a href="profesores/profesorListar.php?id_pro=<?php echo $_SESSION['login']['id']?>" id="crearPDF" target="_blank"><i class="far fa-file-pdf"></i>PDF</a>

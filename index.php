@@ -77,7 +77,7 @@
                                 <table>
                                     <tr>
                                         <td class="arrow">
-                                            <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] ?>?e"><i class="fas fa-angle-double-right"></i></a>
+                                            <a id="flech" href="<?php echo $_SERVER['PHP_SELF'] ?>"><i class="fas fa-angle-double-right"></i></a>
                                         </td>
                                     </tr>
                                 </table>

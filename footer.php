@@ -1,6 +1,6 @@
         <footer id="pie">
         <?php
-            if (!isset($_POST['acceder']) && (!isset($_GET['p']) || $_GET['p'] == 'login' || $_GET['p'] == 'registrar') && !isset($_GET['mO']) && !isset($_GET['e'])) {
+            if (!isset($_SESSION['login']['id'])) {
         ?>
 
                 <p>Siguenos en redes sociales</p>
