@@ -19,6 +19,10 @@ require('clases/profesor.php');
         if (!$profe->buscar($dni)) {
 
             $profe->set($datos);
+        } else {
+            header('HTTP/1.1 500 Internal Server');
+            header('Content-Type: application/json; charset=UTF-8');
+            die(json_encode(array('message' => 'ERROR')));
         }
     } else {
 
@@ -27,6 +31,10 @@ require('clases/profesor.php');
         if (!$alu->buscar($dni)) {
 
             $alu->set($datos);
+        } else {
+            header('HTTP/1.1 500 Internal Server');
+            header('Content-Type: application/json; charset=UTF-8');
+            die(json_encode(array('message' => 'ERROR')));
         }
     }
     

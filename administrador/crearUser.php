@@ -3,7 +3,7 @@
         <div id="contenido">
             <input type="text" name="usuario" id="usuario" placeholder="DNI" autofocus><br>
 
-            <input type="password" name="passw" id="passw" placeholder="Contraseña"><br>
+            <input type="password" name="passw" id="passw" placeholder="Contraseña (8 caracteres min.)"><br>
 
             <input type="password" name="repassw" id="repassw" placeholder="Repetir Contraseña"><br>
 

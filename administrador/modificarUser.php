@@ -54,7 +54,7 @@
                         Contraseña:
                     </td>
                     <td>
-                        <input type="password" id="password" name="password" autofocus>
+                        <input type="password" id="password" name="password" placeholder="8 caracteres min."autofocus>
                     </td>
                 </tr>
                 <tr>

@@ -15,12 +15,18 @@ function crearUser(e) {
     var pass = document.getElementById('passw').value;
     var repass = document.getElementById('repassw').value;
 
+    var dniValido = DniCorrecto(user);
     var camposTexto = camposConContenido(nombre, apellido1, apellido2);
     var emailValido = emailCorrecto(email);
     var passValida = passCorrecta(pass, repass);
 
     $('.error').remove();
     $('.titulos').after('<div class="error"></div>');
+
+    if (!dniValido) {
+        $('.error').append('<p>DNI incorrecto</p>');
+        formularioValido = false;
+    }
 
     if (!camposTexto) {
         $('.error').append('<p>Nombre y apellidos del usuario obligatorios</p>');
@@ -61,6 +67,18 @@ function crearUser(e) {
 
                 setTimeout(function() {
                     $('.mensaje').fadeOut(2000);
+                }, 4000);
+            },
+            error: function () {
+                $('.error').remove();
+
+                $('.titulos').after('<div class="error"></div>');
+                $('.error').append("<p>DNI existente</p>");
+
+                $('#usuario').val("");
+
+                setTimeout(function() {
+                    $('.error').fadeOut(2000);
                 }, 4000);
             }
         });
@@ -231,6 +249,7 @@ function validarRegis(e) {
     var condi = document.getElementById('poli').checked;
 
     var tipoValido = tipoUsuarioCorrecto(tipo);
+    var dniValido = DniCorrecto(user);
     var camposTexto = camposConContenido(nombre, apellido1, apellido2);
     var emailValido = emailCorrecto(email);
     var passValida = passCorrecta(pass, repass);
@@ -240,6 +259,11 @@ function validarRegis(e) {
 
     if (!tipoValido) {
         $('.error').append('<p>Seleccione un tipo de usuario</p>');
+        formularioValido = false;
+    }
+
+    if (!dniValido) {
+        $('.error').append('<p>DNI incorrecto</p>');
         formularioValido = false;
     }
 
@@ -270,7 +294,12 @@ function validarRegis(e) {
             data: { 'tipo': tipo, 'user': user, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
             success: function () {
                 $('.error').remove();
-                $('#titulo').after("<p class='mensaje'>Usuario Creado</p>");
+
+                if (tipo == '1') {
+                    $('#titulo').after("<p class='mensaje'>Profesor Creado</p>");
+                } else {
+                    $('#titulo').after("<p class='mensaje'>Alumno Creado</p>");
+                }
 
                 $('#tipo').val("")
                 $('#usuario').val("");
@@ -283,6 +312,16 @@ function validarRegis(e) {
 
                 setTimeout(function() {
                     $('.mensaje').fadeOut(2000);
+                }, 4000);
+            },
+            error: function () {
+                $('.error').remove();
+                $('#titulo').after("<p class='err'>DNI existente</p>");
+
+                $('#nombre').val("");
+
+                setTimeout(function() {
+                    $('.err').fadeOut(2000);
                 }, 4000);
             }
         });
@@ -333,7 +372,7 @@ function validarModifyProfe(e) {
             url: 'profesores/modificarProfesor.php',
             data: { 'user': user, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
             success: function () {
-                $('#perfil h3').after("<p class='mensaje'>Profesor Modificado</p>");
+                $('#perfil h2').after("<p class='mensaje'>Profesor Modificado</p>");
 
                 $('#nom').val("");
                 $('#apellido1').val("");
@@ -394,7 +433,7 @@ function validarModifyAlumno(e) {
             url: 'alumnos/modificarAlumno.php',
             data: { 'user': user, 'nom': nombre.toUpperCase(), 'apellido1': apellido1.toUpperCase(), 'apellido2': apellido2.toUpperCase(), 'correo': email, 'password': pass },
             success: function () {
-                $('#perfil h3').after("<p class='mensaje'>Alumno Modificado</p>");
+                $('#perfil h2').after("<p class='mensaje'>Alumno Modificado</p>");
 
                 $('#nom').val("");
                 $('#apellido1').val("");
@@ -483,12 +522,12 @@ if (FormuIncidencia) {
         $('html, body').animate({scrollTop:0}, 'slow');
 
         if (!inciMin) {
-            $('#alumnosP h3').after("<p class='error'>Indique alguna incidencia sobre algún alumno</p>");
+            $('#alumnosP h2').after("<p class='error'>Indique alguna incidencia sobre algún alumno</p>");
         } else {
             if (numIncidencias > 1) {
-                $('#alumnosP h3').after("<p class='mensaje'>Incidencias Añadidas</p>");
+                $('#alumnosP h2').after("<p class='mensaje'>Incidencias Añadidas</p>");
             } else {
-                $('#alumnosP h3').after("<p class='mensaje'>Incidencia Añadida</p>");
+                $('#alumnosP h2').after("<p class='mensaje'>Incidencia Añadida</p>");
             }
 
             setTimeout(function() {
@@ -559,6 +598,39 @@ function tipoUsuarioCorrecto(tipo) {
     return false;
 }
 
+// Función para comprobar que DNI sea correcto
+
+function DniCorrecto(dni) {
+    var numeroDNI;
+    var letraDNI;
+    var letra;
+    var expresionRegular = /^[XYZ]?\d{5,8}[A-Z]$/;
+
+    dni = dni.toUpperCase();
+
+    if (expresionRegular.test(dni)) {
+        numeroDNI = dni.substr(0, dni.length - 1);
+        numeroDNI = numeroDNI.replace('X', 0);
+        numeroDNI = numeroDNI.replace('Y', 1);
+        numeroDNI = numeroDNI.replace('Z', 2);
+
+        letraDNI = dni.substr(dni.length - 1, 1);
+
+        numeroDNI = numeroDNI % 23;
+
+        letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+        letra = letra.substring(numeroDNI, numeroDNI + 1);
+
+        if (letra != letraDNI) {
+            return false;
+        } else {
+            return true;
+        }
+    } else {
+        return false;
+    }
+}
+
 // Función para comprobar que campos tengan contenido
 
 function camposConContenido(nombre, apellido1, apellido2) {
@@ -583,7 +655,9 @@ function emailCorrecto(email) {
 function passCorrecta(pass, repass) {
     if (pass != "" && repass != "") {
         if (pass === repass) {
-            return true;
+            if (pass.length >= 8) {
+                return true;
+            }
         }
     }
     return false;

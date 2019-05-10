@@ -302,6 +302,19 @@ input:-webkit-autofill{
     font-size: .8em;
 }
 
+#homePrincipal #formuRegis .err {
+    display: block;
+    width: 80%;
+    background-color: rgb(255, 183, 174);
+    border: 2px solid #ad1717;
+    color: #ad1717;
+    padding: .5em;
+    margin: 0 auto 0.5em;
+    border-radius: 5px;
+    text-align: center;
+    font-size: .8em;
+}
+
 #homePrincipal #formuRegis #contenido {
     display: flex;
     flex-direction: column;
@@ -1435,6 +1448,14 @@ footer ul i {
     #homePrincipal #formuRegis .mensaje {
         width: 30%;
         font-size: 1em;
+    }
+
+    #homePrincipal #formuRegis .err {
+        background-color: rgb(218, 128, 116);
+        border: none;
+        width: 30%;
+        font-size: 1em;
+        color: #000;
     }
 
     #homePrincipal #formuRegis #contenido {
