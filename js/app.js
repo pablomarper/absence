@@ -309,6 +309,7 @@ function validarRegis(e) {
                 $('#email').val("");
                 $('#passw').val("");
                 $('#repassw').val("");
+                $('#poli').prop('checked', false);
 
                 setTimeout(function() {
                     $('.mensaje').fadeOut(2000);
