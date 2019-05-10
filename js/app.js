@@ -586,7 +586,10 @@ function justificarInci(e) {
         setTimeout(function() {
             $('.mensaje').fadeOut(2000);
         }, 4000);
-        
+
+        setTimeout(function() {
+            location.reload();
+        }, 6000);
     }
 }
 
